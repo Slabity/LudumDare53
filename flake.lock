@@ -1,0 +1,60 @@
+{
+  "nodes": {
+    "meptlpkgs": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1682633407,
+        "narHash": "sha256-CoRAi/N1IUMXcD9sU8XnbTZc8D2Wtury+K0LY/K4ZDo=",
+        "owner": "Meptl",
+        "repo": "meptlpkgs",
+        "rev": "93887a57edf366daaaec1a51f7ced479eb060926",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "Meptl",
+        "repo": "meptlpkgs",
+        "type": "gitlab"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1681713375,
+        "narHash": "sha256-UPDEwrzOQLTNzNDMkcf3J7+7vV3zlQCCrO33kwlFsdY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9a60b3eef1a0ccb4e3459eba1814bae91d07134e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1682566018,
+        "narHash": "sha256-HPzPRFiy2o/7k7mtnwfM1E6NVZHiFbPdmYCMoIpkHO4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8e3b64db39f2aaa14b35ee5376bd6a2e707cadc2",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "meptlpkgs": "meptlpkgs",
+        "nixpkgs": "nixpkgs_2"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
