@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5sd73yadu1wj"]
 
-[ext_resource type="Script" path="res://src/cooldowns.gd" id="1_hbhes"]
+[ext_resource type="Script" path="res://src/utils/cooldowns.gd" id="1_p20q2"]
 
 [node name="Cooldowns" type="Node"]
-script = ExtResource("1_hbhes")
+script = ExtResource("1_p20q2")
