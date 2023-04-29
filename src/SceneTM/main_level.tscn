@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://smxbjbahhmou"]
+
+[ext_resource type="PackedScene" uid="uid://bfuw5qhyt2mmr" path="res://src/Prefabs/player_character.tscn" id="1_h33yt"]
+[ext_resource type="PackedScene" uid="uid://gejo2gh12gf4" path="res://src/Prefabs/floor_tile.tscn" id="2_n8fqs"]
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_h33yt")]
+
+[node name="TerrainHolder" type="Node2D" parent="."]
+
+[node name="Floor1" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+
+[node name="Floor" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(99, 615)
+
+[node name="Floor2" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(164, 615)
+
+[node name="Floor3" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(229, 615)
+
+[node name="Floor4" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(294, 615)
+
+[node name="Floor5" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(359, 615)
+
+[node name="Floor6" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(425, 615)
+
+[node name="Floor7" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(490, 615)
+
+[node name="Floor8" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(556, 615)
+
+[node name="Floor9" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(621, 615)
+
+[node name="Floor10" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(687, 615)
+
+[node name="Floor11" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(753, 615)
+
+[node name="Floor12" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(818, 615)
+
+[node name="Floor13" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(885, 615)
+
+[node name="Floor14" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(950, 615)
+
+[node name="Floor15" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(1016, 615)
+
+[node name="Floor16" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(1081, 615)
+
+[node name="Floor17" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(1147, 615)
+
+[node name="Floor18" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(490, 419)
+
+[node name="Floor19" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(425, 419)
+
+[node name="Floor20" parent="TerrainHolder" instance=ExtResource("2_n8fqs")]
+position = Vector2(359, 419)
