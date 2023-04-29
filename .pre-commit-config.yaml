@@ -15,4 +15,5 @@ repos:
     rev: 4.0.1
     hooks:
     -   id: gdformat
-        exclude: ^addons|tests/
+
+exclude: ^addons/
