@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://bts78gcvj65fj"]
+
+[ext_resource type="Script" path="res://src/scenes/menus/options_menu.gd" id="1_36s86"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_36s86")
+
+[node name="MainOptions" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -65.5
+offset_right = 100.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsTitle" type="Label" parent="MainOptions"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="AudioButton" type="Button" parent="MainOptions"]
+layout_mode = 2
+text = "Audio"
+
+[node name="VideoButton" type="Button" parent="MainOptions"]
+layout_mode = 2
+text = "Video"
+
+[node name="MainBackButton" type="Button" parent="MainOptions"]
+layout_mode = 2
+text = "Back"
+
+[node name="AudioOptions" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -75.5
+offset_right = 200.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioTitle" type="Label" parent="AudioOptions"]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="MasterContainer" type="HBoxContainer" parent="AudioOptions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AudioOptions/MasterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.25
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="AudioOptions/MasterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicContainer" type="HBoxContainer" parent="AudioOptions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AudioOptions/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="AudioOptions/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="SFXContainer" type="HBoxContainer" parent="AudioOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="AudioOptions/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="AudioOptions/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="AudioBackButton" type="Button" parent="AudioOptions"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MainOptions/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="MainOptions/VideoButton" to="." method="_on_video_button_pressed"]
+[connection signal="pressed" from="MainOptions/MainBackButton" to="." method="_on_main_back_button_pressed"]
+[connection signal="drag_ended" from="AudioOptions/MasterContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="value_changed" from="AudioOptions/MasterContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="AudioOptions/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="AudioOptions/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="AudioOptions/AudioBackButton" to="." method="_on_audio_back_button_pressed"]
