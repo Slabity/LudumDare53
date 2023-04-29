@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://2to2pbrnshnv"]
+
+[ext_resource type="Script" path="res://src/scene/EnemyScript.gd" id="1_rtfle"]
+[ext_resource type="Texture2D" uid="uid://c53wfj2taeg30" path="res://src/sprites/PlaceholderOfSuffering.png" id="2_0wa05"]
+[ext_resource type="Texture2D" uid="uid://bcurr3wnau6e6" path="res://src/sprites/TreasureChestSpriteScuffed.png" id="3_c8331"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1fqe"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atqqd"]
+radius = 27.074
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6isa"]
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(605, 560)
+script = ExtResource("1_rtfle")
+
+[node name="EnemyBody" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.6)
+texture = ExtResource("2_0wa05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p1fqe")
+
+[node name="TreasureChest" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -26)
+scale = Vector2(0.676553, 0.676553)
+texture = ExtResource("3_c8331")
+
+[node name="Player Detector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
+shape = SubResource("CircleShape2D_atqqd")
+
+[node name="FloorDectorLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorLeft"]
+position = Vector2(-29, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="FloorDectorRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorRight"]
+position = Vector2(30, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[connection signal="body_entered" from="Player Detector" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_entered"]
+[connection signal="body_exited" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_exited"]
+[connection signal="body_entered" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_entered"]
+[connection signal="body_exited" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_exited"]

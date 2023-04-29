@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gejo2gh12gf4"]
+
+[ext_resource type="Texture2D" uid="uid://b1hgb2b6bhrll" path="res://src/Sprites/GrassBlockPlaceholder.png" id="1_tn5jk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq1ng"]
+size = Vector2(65, 67)
+
+[node name="Floor" type="StaticBody2D"]
+position = Vector2(33, 615)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tn5jk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hq1ng")

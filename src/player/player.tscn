@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b74csm0kdko4a"]
+[gd_scene load_steps=8 format=3 uid="uid://b74csm0kdko4a"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hj51j"]
 [ext_resource type="Texture2D" uid="uid://cvanx1etquv83" path="res://src/player/robot_demo.png" id="1_pqllh"]
+[ext_resource type="PackedScene" uid="uid://ba77kgop2fdgi" path="res://src/player/dash_trail_sprite.tscn" id="2_uq7gs"]
 [ext_resource type="PackedScene" uid="uid://b5sd73yadu1wj" path="res://src/utils/cooldowns.tscn" id="3_4k5eq"]
 [ext_resource type="Texture2D" uid="uid://bmniq7827svrg" path="res://src/player/coin.png" id="4_evvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mqu2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqjro"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hj51j")
+dash_trail_sprite = ExtResource("2_uq7gs")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pqllh")
@@ -33,3 +37,10 @@ target_position = Vector2(-20, 0)
 position = Vector2(0, 11)
 texture = ExtResource("4_evvp3")
 hframes = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="EnemyFinder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFinder"]
+shape = SubResource("RectangleShape2D_cqjro")
