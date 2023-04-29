@@ -21,6 +21,7 @@ enum Cooldowns {
 	WALL_KICK_DASH_RESET,
 	WALL_KICK_RECENT,
 	HYPER,
+	GRAPPLE_KICK,
 }
 
 @onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
@@ -41,7 +42,7 @@ enum Cooldowns {
 @export var gravity_multiplier = 1.2
 @export var gravity_input_control_up = 0.9
 @export var gravity_input_control_down = 1.1
-@export var move_x_px_lim = 80
+@export var max_x_movement = 3000  # Maximum x movement.
 @export var wall_friction = 0.5
 @export var wall_kick_speed = 300.0
 @export var wall_hard_kick_speed = 1.3
@@ -50,6 +51,10 @@ enum Cooldowns {
 @export var hyper_speed = 800.0
 @export var hyper_speed_long = 400.0
 @export var coyote_time = 0.1  # Coyote time: ability to jump after recently leaving the ground.
+@export var grapple_kick_strength = 25.0
+@export var grapple_kick_length = 0.2
+@export var grapple_spring_const = 25.0
+@export var grapple_damp_const = Vector2(1.0, 2.0)
 
 var _dash_dir = Vector2.ZERO
 var _can_dash = true
@@ -68,10 +73,13 @@ var _forced_start
 var _forced_end
 @export var _forced_threshold = 26
 
+var grapple_hook_location = Vector2.ZERO
+
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		force_to(get_global_mouse_position())
+	pass
+	# if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	# 	force_to(get_global_mouse_position())
 
 
 # Forcibly move character to position.
@@ -116,6 +124,7 @@ func _physics_process(delta):
 		_apply_movement(input_dir, delta)
 		_check_jump(input_dir)
 		_check_dash(input_dir)
+		_apply_grapple(delta)
 		move_and_slide()
 
 		if is_on_floor() and not cooldowns.exists(Cooldowns.DASH_LIMIT):
@@ -161,7 +170,7 @@ func _apply_movement(input_dir, delta):
 			spd *= wall_hard_kick_influence
 
 		var desired_x = lerpf(velocity.x, input_dir.x * spd, 0.35)
-		velocity.x += clamp(desired_x - velocity.x, -move_x_px_lim, move_x_px_lim)
+		velocity.x += clamp(desired_x - velocity.x, -max_x_movement, max_x_movement)
 		var input_multiplier = 1.0
 		if input_dir.y > 0:
 			input_multiplier = gravity_input_control_down
@@ -283,6 +292,24 @@ func _check_dash(input_dir):
 		cooldowns.add(Cooldowns.DASH_EARLY, dash_reset_early)
 
 
+func _apply_grapple(delta):
+	if grapple_hook_location == Vector2.ZERO:
+		return
+
+	var grapple_vector = to_local(grapple_hook_location)
+	var grapple_dir = grapple_vector.normalized()
+
+	# Apply a magical kick force.
+	if cooldowns.exists(Cooldowns.GRAPPLE_KICK):
+		velocity += grapple_dir * grapple_kick_strength
+
+	# Also apply a spring force.
+	var spring_rest_loc = grapple_vector
+	var force = spring_rest_loc * grapple_spring_const
+	force -= grapple_damp_const * velocity
+	velocity += force * delta
+
+
 func _update_animation(input_dir):
 	# Wall jumps briefly lock sprite direction.
 	if input_dir.x != 0 and not cooldowns.exists(Cooldowns.WALL_KICK_ANIM):
@@ -319,3 +346,12 @@ func _update_animation(input_dir):
 	# Disable or enable outline based on ability to dash.
 	# sprite.material.set_shader_param("line_color", Color(1, 1, 1, 1 if _can_dash else 0))
 	$DebugDot.visible = !_dashing()
+
+
+func _on_grapple_hook_grapple_detached():
+	grapple_hook_location = Vector2.ZERO
+
+
+func _on_grapple_hook_grapple_attached(hook_location: Vector2):
+	grapple_hook_location = hook_location
+	cooldowns.add(Cooldowns.GRAPPLE_KICK, grapple_kick_length)

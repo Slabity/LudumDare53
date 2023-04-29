@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvvkbv4fcd7cp"]
+[gd_scene load_steps=7 format=3 uid="uid://cvvkbv4fcd7cp"]
 
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/player/player.tscn" id="1_33vo3"]
 [ext_resource type="PackedScene" uid="uid://ba77kgop2fdgi" path="res://src/player/dash_trail_sprite.tscn" id="2_5a30t"]
@@ -9,16 +9,21 @@ size = Vector2(43.5, 297)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3geyr"]
 size = Vector2(59.375, 49)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qioph"]
+size = Vector2(197.5, 23)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulqh2"]
 size = Vector2(677, 20)
 
 [node name="test_scene" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("1_33vo3")]
+position = Vector2(-15, -63)
+dash_trail_sprite = ExtResource("2_5a30t")
+grapple_damp_const = Vector2(1, 4)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.547, 1.547)
-
-[node name="Player" parent="." instance=ExtResource("1_33vo3")]
-dash_trail_sprite = ExtResource("2_5a30t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -30,6 +35,10 @@ shape = SubResource("RectangleShape2D_ha7dt")
 position = Vector2(173, 92)
 shape = SubResource("RectangleShape2D_3geyr")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(227, -190)
+shape = SubResource("RectangleShape2D_qioph")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(71.5, 180)
+position = Vector2(72, 211)
 shape = SubResource("RectangleShape2D_ulqh2")

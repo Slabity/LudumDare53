@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b74csm0kdko4a"]
+[gd_scene load_steps=7 format=3 uid="uid://b74csm0kdko4a"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hj51j"]
 [ext_resource type="Texture2D" uid="uid://cvanx1etquv83" path="res://src/player/robot_demo.png" id="1_pqllh"]
 [ext_resource type="PackedScene" uid="uid://b5sd73yadu1wj" path="res://src/utils/cooldowns.tscn" id="3_4k5eq"]
 [ext_resource type="Texture2D" uid="uid://bmniq7827svrg" path="res://src/player/coin.png" id="4_evvp3"]
+[ext_resource type="PackedScene" uid="uid://dsltkjgcvxtv6" path="res://src/player/grapple/grapple.tscn" id="5_y580y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mqu2"]
 
@@ -20,6 +21,9 @@ shape = SubResource("RectangleShape2D_3mqu2")
 
 [node name="Cooldowns" parent="." instance=ExtResource("3_4k5eq")]
 
+[node name="DebugCast" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+
 [node name="FloorDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 17)
 
@@ -33,3 +37,8 @@ target_position = Vector2(-20, 0)
 position = Vector2(0, 11)
 texture = ExtResource("4_evvp3")
 hframes = 4
+
+[node name="grapple_hook" parent="." instance=ExtResource("5_y580y")]
+
+[connection signal="grapple_attached" from="grapple_hook" to="." method="_on_grapple_hook_grapple_attached"]
+[connection signal="grapple_detached" from="grapple_hook" to="." method="_on_grapple_hook_grapple_detached"]
