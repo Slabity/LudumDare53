@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qfihi01x3kj"]
+
+[ext_resource type="Script" path="res://src/scenes/menus/main_menu.gd" id="1_f3o8o"]
+
+[node name="MainMenu" type="VBoxContainer"]
+offset_right = 206.0
+offset_bottom = 101.0
+script = ExtResource("1_f3o8o")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
