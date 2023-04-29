@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 53"
-run/main_scene="res://src/SceneTM/main_level.tscn"
+run/main_scene="res://src/SceneTM/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+
+[autoload]
+
+SceneTransition="*res://src/SceneTM/scene_transition.tscn"
 
 [editor_plugins]
 
