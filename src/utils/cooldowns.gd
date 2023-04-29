@@ -7,6 +7,12 @@ var cooldown_to_timer = {}
 var timer_to_callbacks = {}
 
 
+# Note that if you are using enums to manage cooldown names, you cannot easily
+# use multiple enum objects on the same Cooldowns node. This is because the
+# underlying values of the enum are simple integers and since we key cooldowns
+# by their value, the enums will step on each other. This can be prevented by
+# explicitly specifying the string value of the enum.
+#
 # This resets the timer and overrides the callback if another of the same name
 # is given.
 # GDScript doesn't allow for array unpacking in function calls so
