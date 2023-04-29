@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duy27tqbcoloe"
-path="res://.godot/imported/dash_particle.png-7d0eb5da9d278c09719d5da8553b6177.ctex"
+uid="uid://cvanx1etquv83"
+path="res://.godot/imported/robot_demo.png-6cd54f10cc144a930ab41f74a9090dd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/player/dash_particle.png"
-dest_files=["res://.godot/imported/dash_particle.png-7d0eb5da9d278c09719d5da8553b6177.ctex"]
+source_file="res://assets/player/robot_demo.png"
+dest_files=["res://.godot/imported/robot_demo.png-6cd54f10cc144a930ab41f74a9090dd6.ctex"]
 
 [params]
 
