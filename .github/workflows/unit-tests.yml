@@ -1,0 +1,13 @@
+name: Unit tests
+on: [push]
+jobs:
+  gut:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: paulloz/godot-action@v1.2.1
+        with:
+          version: 4.0
+          export-templates: false
+      - name: Run GUT
+        run: godot -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit
