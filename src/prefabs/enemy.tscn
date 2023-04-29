@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2to2pbrnshnv"]
+[gd_scene load_steps=7 format=3 uid="uid://cafbwyuj8ejjv"]
 
-[ext_resource type="Script" path="res://src/scene/EnemyScript.gd" id="1_rtfle"]
+[ext_resource type="Script" path="res://src/scenes/EnemyScript.gd" id="1_ngbc5"]
 [ext_resource type="Texture2D" uid="uid://c53wfj2taeg30" path="res://src/sprites/PlaceholderOfSuffering.png" id="2_0wa05"]
 [ext_resource type="Texture2D" uid="uid://bcurr3wnau6e6" path="res://src/sprites/TreasureChestSpriteScuffed.png" id="3_c8331"]
 
@@ -14,7 +14,7 @@ radius = 27.074
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(605, 560)
-script = ExtResource("1_rtfle")
+script = ExtResource("1_ngbc5")
 
 [node name="EnemyBody" type="Sprite2D" parent="."]
 scale = Vector2(0.64, 0.6)

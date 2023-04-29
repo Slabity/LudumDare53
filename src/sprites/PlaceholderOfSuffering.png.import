@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c53wfj2taeg30"
-path="res://.godot/imported/PlaceholderOfSuffering.png-15d30e6ce5f5772a2f727213088223ce.ctex"
+path="res://.godot/imported/PlaceholderOfSuffering.png-51b48828af427116c859304ef8d7ea72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sprites/PlaceholderOfSuffering.png"
-dest_files=["res://.godot/imported/PlaceholderOfSuffering.png-15d30e6ce5f5772a2f727213088223ce.ctex"]
+source_file="res://src/sprites/PlaceholderOfSuffering.png"
+dest_files=["res://.godot/imported/PlaceholderOfSuffering.png-51b48828af427116c859304ef8d7ea72.ctex"]
 
 [params]
 
