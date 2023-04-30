@@ -6,3 +6,5 @@
 script = ExtResource("1_rwtyy")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -2)
+collision_mask = 3
