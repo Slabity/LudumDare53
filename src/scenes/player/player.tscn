@@ -12,10 +12,6 @@
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kw1vg")
 dash_trail_sprite = ExtResource("2_8kwlp")
-dash_speed = Vector2(500, 700)
-dash_length = 0.17
-hyper_speed = 700.0
-hyper_speed_long = 350.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pqllh")
