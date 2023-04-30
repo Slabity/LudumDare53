@@ -14,6 +14,7 @@ func switch_to_menu(menu_name: String):
 
 func _on_play_button_pressed():
 	play_game.emit()
+	
 
 
 func _on_options_button_pressed():
