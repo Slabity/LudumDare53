@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq7868th46tvw"]
+[gd_scene load_steps=3 format=3 uid="uid://cq7868th46tvw"]
 
+[ext_resource type="Script" path="res://src/scenes/main_scene.gd" id="1_2l7t8"]
 [ext_resource type="PackedScene" uid="uid://b5qfihi01x3kj" path="res://src/scenes/menus/main_menu.tscn" id="1_s2i35"]
 
 [node name="MainScene" type="Control"]
@@ -11,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+script = ExtResource("1_2l7t8")
 
 [node name="MainMenu" parent="." instance=ExtResource("1_s2i35")]
 layout_mode = 1
@@ -25,3 +27,6 @@ offset_right = 103.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="exit_menu" from="MainMenu" to="." method="_on_main_menu_exit_menu"]
+[connection signal="play_game" from="MainMenu" to="." method="_on_main_menu_play_game"]
