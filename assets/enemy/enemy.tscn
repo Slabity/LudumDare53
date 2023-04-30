@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfvmunhddlfnc"]
+
+[ext_resource type="Script" path="res://src/scenes/EnemyScript.gd" id="1_ngbc5"]
+[ext_resource type="Texture2D" uid="uid://dj86168v70nli" path="res://assets/GeneralArt/PlaceholderOfSuffering.png" id="2_ts808"]
+[ext_resource type="Texture2D" uid="uid://det4u1og2jkc1" path="res://assets/GeneralArt/TreasureChestSprit.png" id="3_gxhu1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1fqe"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atqqd"]
+radius = 27.074
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6isa"]
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(605, 560)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_ngbc5")
+
+[node name="EnemyBody" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.6)
+texture = ExtResource("2_ts808")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p1fqe")
+
+[node name="TreasureChest" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -26)
+scale = Vector2(0.676553, 0.676553)
+texture = ExtResource("3_gxhu1")
+
+[node name="Player Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
+shape = SubResource("CircleShape2D_atqqd")
+
+[node name="FloorDectorLeft" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorLeft"]
+position = Vector2(-29, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="FloorDectorRight" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorRight"]
+position = Vector2(30, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="WallDectorLeft" type="Area2D" parent="."]
+position = Vector2(-2, -34)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDectorLeft"]
+position = Vector2(-29, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="WallDectorRight" type="Area2D" parent="."]
+position = Vector2(2, -36)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDectorRight"]
+position = Vector2(30, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[connection signal="body_entered" from="Player Detector" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_entered"]
+[connection signal="body_exited" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_exited"]
+[connection signal="body_entered" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_entered"]
+[connection signal="body_exited" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_exited"]
+[connection signal="body_entered" from="WallDectorLeft" to="." method="_on_wall_dector_left_body_entered"]
+[connection signal="body_exited" from="WallDectorLeft" to="." method="_on_wall_dector_left_body_exited"]
+[connection signal="body_entered" from="WallDectorRight" to="." method="_on_wall_dector_right_body_entered"]
+[connection signal="body_exited" from="WallDectorRight" to="." method="_on_wall_dector_right_body_exited"]
