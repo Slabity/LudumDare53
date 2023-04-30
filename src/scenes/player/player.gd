@@ -35,8 +35,8 @@ enum Cooldowns {
 
 @export var dash_trail_sprite: PackedScene
 @export var speed = Vector2(200.0, 350.0)
-@export var dash_speed = Vector2(600.0, 600.0)
-@export var dash_length = 0.2  # Duration of dash effect - how long we fast.
+@export var dash_speed = Vector2(500.0, 550.0)
+@export var dash_length = 0.17  # Duration of dash effect - how long we fast.
 @export var dash_limit = 0.4  # Cooldown between dashes (unless other tech is used)
 @export var dash_reset_early = 0.16
 @export var gravity_multiplier = 1.2
@@ -48,8 +48,8 @@ enum Cooldowns {
 @export var wall_hard_kick_speed = 1.3
 @export var wall_hard_kick_influence = 1.5  # multipler on movement away from wall post kick.
 @export var wall_bounce_speed = Vector2(1.2, 1.2)
-@export var hyper_speed = 800.0
-@export var hyper_speed_long = 400.0
+@export var hyper_speed = 700.0
+@export var hyper_speed_long = 350.0
 @export var coyote_time = 0.1  # Coyote time: ability to jump after recently leaving the ground.
 @export var grapple_kick_strength = 25.0
 @export var grapple_kick_length = 0.2
