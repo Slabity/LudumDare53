@@ -33,6 +33,8 @@ enum Cooldowns {
 @onready var cooldowns = $Cooldowns
 # @onready var dash_particles = $DashParticles
 
+@export var air_momentum = 0.96  # Higher is more drag.
+@export var air_input_multiplier = 0.75  # Input influence while in air
 @export var dash_trail_sprite: PackedScene
 @export var speed = Vector2(200.0, 350.0)
 @export var dash_speed = Vector2(500.0, 550.0)
@@ -42,7 +44,6 @@ enum Cooldowns {
 @export var gravity_multiplier = 1.2
 @export var gravity_input_control_up = 0.9
 @export var gravity_input_control_down = 1.1
-@export var max_x_movement = 3000  # Maximum x movement.
 @export var wall_friction = 0.5
 @export var wall_kick_speed = 300.0
 @export var wall_hard_kick_speed = 1.3
@@ -55,6 +56,8 @@ enum Cooldowns {
 @export var grapple_kick_length = 0.2
 @export var grapple_spring_const = 25.0
 @export var grapple_damp_const = Vector2(1.0, 2.0)
+@export var grapple_swing_ratio = 0.06  # How much the velocity influences the swing force.
+@export var grapple_max_force = 18.0
 
 var _dash_dir = Vector2.ZERO
 var _can_dash = true
@@ -163,39 +166,43 @@ func _apply_movement(input_dir, delta):
 		velocity = _dash_dir * dash_speed
 		if sliding:
 			velocity *= 0.7
+		return
+
+	var spd = hyper_speed_long if cooldowns.exists(Cooldowns.HYPER) else speed.x
+	if cooldowns.exists(Cooldowns.WALL_KICK_HARD) and _wall_dir_kick_hard * input_dir.x < 0:
+		# More speed away from wall after recently kicking off one.
+		spd *= wall_hard_kick_influence
+
+	var multiplier = 0.85 if not is_on_floor() else 1.0
+	var input_multiplier = air_input_multiplier if not is_on_floor() else 1.0
+	var desired_x = lerpf(velocity.x, input_dir.x * spd * input_multiplier, 0.3)
+	velocity.x += desired_x - velocity.x * multiplier
+
+	var grav_multiplier = 1.0
+	if input_dir.y > 0:
+		grav_multiplier = gravity_input_control_down
+	elif input_dir.y < 0:
+		grav_multiplier = gravity_input_control_up
+	velocity.y += gravity * gravity_multiplier * delta * grav_multiplier
+
+	# Apply wall friction. If applying friction for a certain time, reset dash.
+	if (
+		velocity.y > 0
+		and (
+			input_dir.x > 0.0 and right_wall_detector.is_colliding()
+			or input_dir.x < 0.0 and left_wall_detector.is_colliding()
+		)
+		and not cooldowns.exists(Cooldowns.WALL_KICK_RECENT)
+	):
+		velocity.y *= wall_friction
+		if !_can_dash:
+			if cooldowns.exists(Cooldowns.WALL_KICK_DASH_RESET):
+				cooldowns.remove(Cooldowns.WALL_KICK_DASH_RESET)
+			elif !cooldowns.exists(Cooldowns.WALL_DASH_RESET):
+				cooldowns.add(Cooldowns.WALL_DASH_RESET, dash_limit, self, "_reset_dash")
 	else:
-		var spd = hyper_speed_long if cooldowns.exists(Cooldowns.HYPER) else speed.x
-		if cooldowns.exists(Cooldowns.WALL_KICK_HARD) and _wall_dir_kick_hard * input_dir.x < 0:
-			# More speed away from wall after recently kicking off one.
-			spd *= wall_hard_kick_influence
-
-		var desired_x = lerpf(velocity.x, input_dir.x * spd, 0.35)
-		velocity.x += clamp(desired_x - velocity.x, -max_x_movement, max_x_movement)
-		var input_multiplier = 1.0
-		if input_dir.y > 0:
-			input_multiplier = gravity_input_control_down
-		elif input_dir.y < 0:
-			input_multiplier = gravity_input_control_up
-		velocity.y += gravity * gravity_multiplier * delta * input_multiplier
-
-		# Apply wall friction. If applying friction for a certain time, reset dash.
-		if (
-			velocity.y > 0
-			and (
-				input_dir.x > 0.0 and right_wall_detector.is_colliding()
-				or input_dir.x < 0.0 and left_wall_detector.is_colliding()
-			)
-			and not cooldowns.exists(Cooldowns.WALL_KICK_RECENT)
-		):
-			velocity.y *= wall_friction
-			if !_can_dash:
-				if cooldowns.exists(Cooldowns.WALL_KICK_DASH_RESET):
-					cooldowns.remove(Cooldowns.WALL_KICK_DASH_RESET)
-				elif !cooldowns.exists(Cooldowns.WALL_DASH_RESET):
-					cooldowns.add(Cooldowns.WALL_DASH_RESET, dash_limit, self, "_reset_dash")
-		else:
-			if cooldowns.exists(Cooldowns.WALL_DASH_RESET):
-				cooldowns.remove_no_callback(Cooldowns.WALL_DASH_RESET)
+		if cooldowns.exists(Cooldowns.WALL_DASH_RESET):
+			cooldowns.remove_no_callback(Cooldowns.WALL_DASH_RESET)
 
 
 func _reset_dash():
@@ -308,6 +315,23 @@ func _apply_grapple(delta):
 	var force = spring_rest_loc * grapple_spring_const
 	force -= grapple_damp_const * velocity
 	velocity += force * delta
+
+	# Convert some velocity into a swing velocity.
+	var perpendicular = Vector2(grapple_dir.y, grapple_dir.x)
+	# Calculate orientation of perpendicular
+	if grapple_dir.x > 0:
+		perpendicular.y *= -1
+	else:
+		perpendicular.x *= -1
+	if velocity.y > 0:
+		perpendicular *= -1
+
+	var swing_force = grapple_swing_ratio * velocity.length() * perpendicular
+	swing_force = swing_force.clamp(
+		Vector2(-grapple_max_force, -grapple_max_force),
+		Vector2(grapple_max_force, grapple_max_force)
+	)
+	velocity += swing_force
 
 
 func _update_animation(input_dir):
