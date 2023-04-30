@@ -14,6 +14,8 @@ radius = 27.074
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(605, 560)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ngbc5")
 
 [node name="EnemyBody" type="Sprite2D" parent="."]
@@ -30,20 +32,41 @@ scale = Vector2(0.676553, 0.676553)
 texture = ExtResource("3_c8331")
 
 [node name="Player Detector" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
 shape = SubResource("CircleShape2D_atqqd")
 
 [node name="FloorDectorLeft" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorLeft"]
 position = Vector2(-29, 35)
 shape = SubResource("RectangleShape2D_c6isa")
 
 [node name="FloorDectorRight" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDectorRight"]
+position = Vector2(30, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="WallDectorLeft" type="Area2D" parent="."]
+position = Vector2(-2, -34)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDectorLeft"]
+position = Vector2(-29, 35)
+shape = SubResource("RectangleShape2D_c6isa")
+
+[node name="WallDectorRight" type="Area2D" parent="."]
+position = Vector2(2, -36)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDectorRight"]
 position = Vector2(30, 35)
 shape = SubResource("RectangleShape2D_c6isa")
 
@@ -52,3 +75,7 @@ shape = SubResource("RectangleShape2D_c6isa")
 [connection signal="body_exited" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_exited"]
 [connection signal="body_entered" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_entered"]
 [connection signal="body_exited" from="FloorDectorRight" to="." method="_on_floor_dector_right_body_exited"]
+[connection signal="body_entered" from="WallDectorLeft" to="." method="_on_wall_dector_left_body_entered"]
+[connection signal="body_exited" from="WallDectorLeft" to="." method="_on_wall_dector_left_body_exited"]
+[connection signal="body_entered" from="WallDectorRight" to="." method="_on_wall_dector_right_body_entered"]
+[connection signal="body_exited" from="WallDectorRight" to="." method="_on_wall_dector_right_body_exited"]

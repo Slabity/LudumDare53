@@ -80,7 +80,7 @@ position = Vector2(687, 481)
 [node name="Floor25" parent="TerrainHolder" instance=ExtResource("1_3gqlt")]
 position = Vector2(686, 415)
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_j30vr")]
+[node name="Player" parent="." instance=ExtResource("2_j30vr")]
 position = Vector2(173, 557)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_tf5hu")]
