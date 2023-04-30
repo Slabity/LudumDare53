@@ -13,7 +13,6 @@
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kw1vg")
 dash_trail_sprite = ExtResource("2_8kwlp")
-dash_speed = Vector2(500, 700)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pqllh")

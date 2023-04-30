@@ -37,14 +37,14 @@ enum Cooldowns {
 @export var air_input_multiplier = 0.75  # Input influence while in air
 @export var dash_trail_sprite: PackedScene
 @export var speed = Vector2(200.0, 350.0)
-@export var dash_speed = Vector2(500.0, 550.0)
-@export var dash_length = 0.17  # Duration of dash effect - how long we fast.
+@export var dash_speed = Vector2(500.0, 500.0)  # Additive to pre-dash velocity
+@export var dash_length = 0.2  # Duration of dash effect - how long we fast.
 @export var dash_limit = 0.4  # Cooldown between dashes (unless other tech is used)
 @export var dash_reset_early = 0.16
 @export var gravity_multiplier = 1.2
 @export var gravity_input_control_up = 0.9
 @export var gravity_input_control_down = 1.1
-@export var wall_friction = 0.5
+@export var wall_friction = 0.9
 @export var wall_kick_speed = 300.0
 @export var wall_hard_kick_speed = 1.3
 @export var wall_hard_kick_influence = 1.5  # multipler on movement away from wall post kick.
@@ -62,6 +62,7 @@ enum Cooldowns {
 var _dash_dir = Vector2.ZERO
 var _can_dash = true
 var _dash_trail_tick = false
+var _pre_dash_velocity = Vector2.ZERO
 
 var _wall_dir_kick_hard
 
@@ -113,7 +114,7 @@ func _on_force_to_finished():
 
 
 func _on_dash_timeout():
-	velocity = Vector2.ZERO
+	pass
 
 
 func _physics_process(delta):
@@ -163,7 +164,17 @@ func _apply_coyote():
 func _apply_movement(input_dir, delta):
 	if _dashing():
 		var sliding = velocity.normalized() != _dash_dir.normalized()
-		velocity = _dash_dir * dash_speed
+		# Undo the normalization from Input.get_vector.
+		velocity = (
+			_pre_dash_velocity
+			+ (
+				Vector2(
+					1.0 if _dash_dir.x > 0 else -1.0 if _dash_dir.x < 0 else 0.0,
+					1.0 if _dash_dir.y > 0 else -1.0 if _dash_dir.y < 0 else 0.0
+				)
+				* dash_speed
+			)
+		)
 		if sliding:
 			velocity *= 0.7
 		return
@@ -294,6 +305,7 @@ func _check_dash(input_dir):
 	if Input.is_action_just_pressed("dash") and _can_dash and input_dir != Vector2.ZERO:
 		_dash_dir = input_dir
 		_can_dash = false
+		_pre_dash_velocity = velocity
 		cooldowns.add(Cooldowns.DASH, dash_length, self, "_on_dash_timeout")
 		cooldowns.add(Cooldowns.DASH_LIMIT, dash_limit)
 		cooldowns.add(Cooldowns.DASH_EARLY, dash_reset_early)
@@ -369,7 +381,7 @@ func _update_animation(input_dir):
 	# dash_particles.emitting = _dashing()
 	# Disable or enable outline based on ability to dash.
 	# sprite.material.set_shader_param("line_color", Color(1, 1, 1, 1 if _can_dash else 0))
-	$DebugDot.visible = !_dashing()
+	$DebugDot.visible = _can_dash
 
 
 func _on_grapple_hook_grapple_detached():
@@ -377,5 +389,6 @@ func _on_grapple_hook_grapple_detached():
 
 
 func _on_grapple_hook_grapple_attached(hook_location: Vector2):
+	_reset_dash()
 	grapple_hook_location = hook_location
 	cooldowns.add(Cooldowns.GRAPPLE_KICK, grapple_kick_length)
