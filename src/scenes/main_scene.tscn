@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qfihi01x3kj" path="res://src/scenes/menus/main_menu.tscn" id="1_s2i35"]
 [ext_resource type="Texture2D" uid="uid://dqb2hh3n06xv7" path="res://assets/GeneralArt/WorkerWIP.png" id="3_yfchj"]
 [ext_resource type="Texture2D" uid="uid://bsjlo6b1j6xyx" path="res://assets/GeneralArt/Chaser.png" id="4_6l1ht"]
-[ext_resource type="Script" path="res://src/scenes/MenuBounce.gd" id="4_nr25p"]
+[ext_resource type="Script" path="res://src/scenes/menu_bounce.gd" id="4_nr25p"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
