@@ -6,7 +6,7 @@ extends Node2D
 @onready var raycast = $RayCast2D
 @onready var links = $Links
 @onready var hook = $Hook
-@export var grapple_length: float = 170.0
+@export var grapple_length: float = 200.0
 @export var hook_speed = 1500.0
 
 signal grapple_attached(hook_location: Vector2)  # global position
