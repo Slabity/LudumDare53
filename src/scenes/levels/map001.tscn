@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="3_j3dgf"]
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="5_5c826"]
 [ext_resource type="PackedScene" uid="uid://dwam70uta35gu" path="res://src/scenes/menus/minimap/minimap.tscn" id="5_m1rae"]
+[ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="5_wppth"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vp840"]
 texture = ExtResource("2_8ylsy")
@@ -630,15 +631,6 @@ terrain_set_0/terrain_0/name = "AutoTile"
 terrain_set_0/terrain_0/color = Color(0.87451, 0.0117647, 0.0313726, 1)
 sources/1 = SubResource("TileSetAtlasSource_vp840")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
-size = Vector2(30, 398)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eno2c"]
-bg_color = Color(0.6, 0, 0.0666667, 0.360784)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1q1g"]
-size = Vector2(82, 93)
-
 [node name="map001" type="Node2D"]
 script = ExtResource("1_nne3c")
 
@@ -671,37 +663,12 @@ offset_right = -238.0
 offset_bottom = 162.0
 text = "00:00:00:00"
 
-[node name="StartArea" type="Area2D" parent="."]
-metadata/_edit_group_ = true
+[node name="StartArea" parent="." instance=ExtResource("5_wppth")]
+position = Vector2(314, -35)
+scale = Vector2(0.600001, 4.4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartArea"]
-position = Vector2(280, 7)
-shape = SubResource("RectangleShape2D_osk7d")
-
-[node name="Panel" type="Panel" parent="StartArea"]
-offset_left = 264.0
-offset_top = -193.0
-offset_right = 293.0
-offset_bottom = 201.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
-metadata/_edit_use_anchors_ = true
-
-[node name="WinArea" type="Area2D" parent="."]
-position = Vector2(1789, -178)
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="WinArea"]
-offset_left = -36.0
-offset_top = -39.0
-offset_right = -7.0
-offset_bottom = 355.0
-scale = Vector2(2.68, 0.2)
-theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
-position = Vector2(2, -1)
-shape = SubResource("RectangleShape2D_b1q1g")
+[node name="WinArea" parent="." instance=ExtResource("5_wppth")]
+position = Vector2(1793, -189)
 
 [node name="Enemy" parent="." instance=ExtResource("5_5c826")]
 position = Vector2(125, 79)

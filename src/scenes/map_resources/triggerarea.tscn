@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://crj3nasx65tg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
+size = Vector2(84, 77)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eno2c"]
+bg_color = Color(0.6, 0, 0.0666667, 0.360784)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_osk7d")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -42.0
+offset_top = -39.0
+offset_right = -13.0
+offset_bottom = 355.0
+scale = Vector2(2.89174, 0.19582)
+theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
+metadata/_edit_use_anchors_ = true
