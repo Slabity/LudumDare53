@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_hj51j"]
 [ext_resource type="Texture2D" uid="uid://cvanx1etquv83" path="res://src/player/robot_demo.png" id="1_pqllh"]
-[ext_resource type="PackedScene" uid="uid://ba77kgop2fdgi" path="res://src/player/dash_trail_sprite.tscn" id="2_uq7gs"]
+[ext_resource type="PackedScene" uid="uid://ba77kgop2fdgi" path="res://src/scenes/player/dash_trail_sprite.tscn" id="2_uq7gs"]
 [ext_resource type="PackedScene" uid="uid://b5sd73yadu1wj" path="res://src/utils/cooldowns.tscn" id="3_4k5eq"]
 [ext_resource type="Texture2D" uid="uid://bmniq7827svrg" path="res://src/player/coin.png" id="4_evvp3"]
 
