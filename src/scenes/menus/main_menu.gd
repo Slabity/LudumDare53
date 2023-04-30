@@ -1,24 +1,28 @@
-extends VBoxContainer
+extends Control
+
+signal play_game
+signal exit_menu
+
+@onready var current_menu = $MainButtons
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func switch_to_menu(menu_name: String):
+	current_menu.hide()
+	current_menu = get_node(menu_name)
+	current_menu.show()
 
 
 func _on_play_button_pressed():
-	print("TODO: PlayButton pressed()")
+	play_game.emit()
 
 
 func _on_options_button_pressed():
-	print("TODO: OptionsButton pressed()")
+	switch_to_menu("SettingsMenu")
 
 
-# Quit game
 func _on_quit_button_pressed():
-	get_tree().quit()
+	exit_menu.emit()
+
+
+func _on_settings_menu_exit_menu():
+	switch_to_menu("MainButtons")

@@ -1,8 +1,10 @@
 extends Node
 
-const SETTINGS_PATH = "user://settings.cfg"
+const SETTINGS_PATH = "user://settings"
 
 var settings = {}
+
+@export var default_settings = {"vol_master": 40, "vol_music": 100, "vol_sfx": 100}
 
 
 func _ready():
@@ -12,7 +14,8 @@ func _ready():
 func load_settings():
 	# Create default settings if file doesn't exist
 	if not FileAccess.file_exists(SETTINGS_PATH):
-		settings = {"vol_master": 40, "vol_music": 100, "vol_sfx": 100}
+		print("Settings file not found, creating new one")
+		settings = default_settings
 		save_settings()
 	else:
 		var file = FileAccess.open(SETTINGS_PATH, FileAccess.READ)
@@ -21,6 +24,7 @@ func load_settings():
 
 
 func save_settings():
+	print("Saving settings")
 	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	file.store_var(settings)
 	file.close()
