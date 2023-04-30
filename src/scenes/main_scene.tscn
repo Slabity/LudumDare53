@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq7868th46tvw"]
+[gd_scene load_steps=6 format=3 uid="uid://cq7868th46tvw"]
 
 [ext_resource type="Script" path="res://src/scenes/main_scene.gd" id="1_2l7t8"]
 [ext_resource type="PackedScene" uid="uid://b5qfihi01x3kj" path="res://src/scenes/menus/main_menu.tscn" id="1_s2i35"]
+[ext_resource type="Texture2D" uid="uid://dqb2hh3n06xv7" path="res://assets/GeneralArt/WorkerWIP.png" id="3_yfchj"]
+[ext_resource type="Texture2D" uid="uid://bsjlo6b1j6xyx" path="res://assets/GeneralArt/Chaser.png" id="4_6l1ht"]
+[ext_resource type="Script" path="res://src/scenes/menu_bounce.gd" id="4_nr25p"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -27,6 +30,18 @@ offset_right = 103.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MenuBounceCat" type="Sprite2D" parent="."]
+position = Vector2(898, 454)
+scale = Vector2(0.270827, 0.270827)
+texture = ExtResource("3_yfchj")
+script = ExtResource("4_nr25p")
+
+[node name="MenuBounceChaser" type="Sprite2D" parent="."]
+position = Vector2(211, 209)
+scale = Vector2(0.357635, 0.357635)
+texture = ExtResource("4_6l1ht")
+script = ExtResource("4_nr25p")
 
 [connection signal="exit_menu" from="MainMenu" to="." method="_on_main_menu_exit_menu"]
 [connection signal="play_game" from="MainMenu" to="." method="_on_main_menu_play_game"]
