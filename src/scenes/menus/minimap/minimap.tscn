@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwam70uta35gu"]
+
+[ext_resource type="Texture2D" uid="uid://6lp1sfoik4lo" path="res://assets/2x2-white.png" id="1_d8ypy"]
+[ext_resource type="Script" path="res://src/scenes/menus/minimap/minimap.gd" id="1_lo363"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6qka"]
+texture = ExtResource("1_d8ypy")
+texture_region_size = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n3lk8"]
+tile_size = Vector2i(2, 2)
+sources/1 = SubResource("TileSetAtlasSource_l6qka")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_n3lk8")
+cell_quadrant_size = 2
+format = 2
+script = ExtResource("1_lo363")
+
+[node name="PlayerIndicator" type="Sprite2D" parent="."]
+modulate = Color(1, 0.156863, 0.247059, 1)
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(1.26162, -2.55483)
+texture = ExtResource("1_d8ypy")
