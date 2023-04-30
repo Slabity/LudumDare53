@@ -12,6 +12,8 @@ extends Node2D
 signal grapple_attached(hook_location: Vector2)  # global position
 signal grapple_detached
 
+var enabled = true
+
 var firing = false
 var will_hook = false
 var target_pos = Vector2.ZERO
@@ -32,6 +34,9 @@ func _process(delta):
 
 
 func _input(event: InputEvent) -> void:
+	if !enabled:
+		return
+
 	if InputMap.event_is_action(event, "grapple"):
 		if event.pressed:
 			if event is InputEventMouseButton:
