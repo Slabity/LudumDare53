@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct33yxsc387je"]
+[gd_scene load_steps=12 format=3 uid="uid://ct33yxsc387je"]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_nne3c"]
 [ext_resource type="Texture2D" uid="uid://la6nlyf4y46j" path="res://assets/tileset.png" id="2_8ylsy"]

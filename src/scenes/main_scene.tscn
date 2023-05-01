@@ -43,5 +43,17 @@ scale = Vector2(0.357635, 0.357635)
 texture = ExtResource("4_6l1ht")
 script = ExtResource("4_nr25p")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.7793, 16.44)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="exit_menu" from="MainMenu" to="." method="_on_main_menu_exit_menu"]
 [connection signal="play_game" from="MainMenu" to="." method="_on_main_menu_play_game"]
