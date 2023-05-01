@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/scenes/player/player.tscn" id="3_7ghew"]
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
-[ext_resource type="PackedScene" uid="uid://1q5esfkbc0ii" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
+[ext_resource type="PackedScene" uid="uid://daxhgpltoij7t" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="5_pyokv"]
 [ext_resource type="Texture2D" uid="uid://disvcddm1rwev" path="res://assets/GeneralArt/PizzaHouseBackground.png" id="6_qe8oe"]
@@ -39,8 +39,6 @@ layer_0/tile_data = PackedInt32Array(7930149, 131073, 2, 7864613, 131073, 1, 779
 position = Vector2(41, -49)
 collision_mask = 3
 
-[node name="background_display" parent="Player" instance=ExtResource("4_yva5e")]
-
 [node name="Camera2D" parent="." instance=ExtResource("4_v8kh4")]
 zoom = Vector2(1.7, 1.7)
 target_node_path = NodePath("../Player")
@@ -67,6 +65,9 @@ alignment = 1
 visible = false
 position = Vector2(-283, 136)
 texture = ExtResource("5_pyokv")
+
+[node name="background_display" parent="Camera2D" instance=ExtResource("4_yva5e")]
+position = Vector2(41, -49)
 
 [node name="StartArea" type="Area2D" parent="."]
 visible = false
@@ -216,12 +217,12 @@ bus = &"Music"
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
 [connection signal="target_set" from="QuestSystem" to="Camera2D" method="_on_quest_system_target_set"]
-[connection signal="body_entered" from="BackgroundFlags/TowerEntryFlag" to="Player/background_display" method="_set_background" binds= ["tower"]]
-[connection signal="body_entered" from="BackgroundFlags/TowerExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
-[connection signal="body_entered" from="BackgroundFlags/DungeonExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
-[connection signal="body_entered" from="BackgroundFlags/DungeonEntryFlag" to="Player/background_display" method="_set_background" binds= ["dungeon"]]
-[connection signal="body_entered" from="BackgroundFlags/PitsExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
-[connection signal="body_entered" from="BackgroundFlags/OutskirtsEntryFlag" to="Player/background_display" method="_set_background" binds= ["outskirts"]]
-[connection signal="body_entered" from="BackgroundFlags/OutskirtsExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
-[connection signal="body_entered" from="BackgroundFlags/PitsEntryFlag" to="Player/background_display" method="_set_background" binds= ["pits"]]
+[connection signal="body_entered" from="BackgroundFlags/TowerEntryFlag" to="Camera2D/background_display" method="_set_background" binds= ["tower"]]
+[connection signal="body_entered" from="BackgroundFlags/TowerExitFlag" to="Camera2D/background_display" method="_set_background" binds= ["city"]]
+[connection signal="body_entered" from="BackgroundFlags/DungeonExitFlag" to="Camera2D/background_display" method="_set_background" binds= ["city"]]
+[connection signal="body_entered" from="BackgroundFlags/DungeonEntryFlag" to="Camera2D/background_display" method="_set_background" binds= ["dungeon"]]
+[connection signal="body_entered" from="BackgroundFlags/PitsExitFlag" to="Camera2D/background_display" method="_set_background" binds= ["city"]]
+[connection signal="body_entered" from="BackgroundFlags/OutskirtsEntryFlag" to="Camera2D/background_display" method="_set_background" binds= ["outskirts"]]
+[connection signal="body_entered" from="BackgroundFlags/OutskirtsExitFlag" to="Camera2D/background_display" method="_set_background" binds= ["city"]]
+[connection signal="body_entered" from="BackgroundFlags/PitsEntryFlag" to="Camera2D/background_display" method="_set_background" binds= ["pits"]]
 [connection signal="finished" from="MusicIntro" to="MusicLoop" method="play"]
