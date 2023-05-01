@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clqau7174l5xq" path="res://assets/GeneralArt/FToInteract.png" id="1_3s7ue"]
 [ext_resource type="Script" path="res://assets/systems/quest_system.gd" id="1_oxycj"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="3_ncout"]
-[ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="4_4abda"]
+[ext_resource type="Theme" path="res://assets/primary_theme.tres" id="4_4abda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0bo1"]
 size = Vector2(259, 196)
@@ -39,6 +39,7 @@ position = Vector2(3162, -4578)
 texture = ExtResource("3_ncout")
 
 [node name="MenuBar" type="VBoxContainer" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -198.0
 offset_right = 203.0
