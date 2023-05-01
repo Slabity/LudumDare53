@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://y8hpdvbuk7i5"]
+[gd_scene load_steps=20 format=3 uid="uid://y8hpdvbuk7i5"]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
 [ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="10_4qky2"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
+[ext_resource type="AudioStream" uid="uid://c5124xbhtgadu" path="res://assets/music/thats_it_for_today_intro.wav" id="10_7vo72"]
+[ext_resource type="AudioStream" uid="uid://djtisnybnagia" path="res://assets/music/thats_it_for_today_loop.wav" id="11_wkmmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
 size = Vector2(30, 398)
@@ -197,6 +199,16 @@ scale = Vector2(1, 18.2956)
 [node name="PitsEntryFlag" parent="BackgroundFlags" instance=ExtResource("11_a0kwl")]
 position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
+[node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7vo72")
+volume_db = -6.19
+autoplay = true
+bus = &"Music"
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wkmmp")
+volume_db = -6.19
+bus = &"Music"
 
 [connection signal="body_entered" from="StartArea" to="." method="_on_start_area_body_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
@@ -210,3 +222,4 @@ scale = Vector2(1, 2.04)
 [connection signal="body_entered" from="BackgroundFlags/OutskirtsEntryFlag" to="Player/background_display" method="_set_background" binds= ["outskirts"]]
 [connection signal="body_entered" from="BackgroundFlags/OutskirtsExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
 [connection signal="body_entered" from="BackgroundFlags/PitsEntryFlag" to="Player/background_display" method="_set_background" binds= ["pits"]]
+[connection signal="finished" from="MusicIntro" to="MusicLoop" method="play"]
