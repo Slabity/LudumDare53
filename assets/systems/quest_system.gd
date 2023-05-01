@@ -46,6 +46,7 @@ func _physics_process(delta):
 			var node = get_child(5)
 			if set_node_visibility(5, true, false):
 				is_menu_visible = true
+				node.get_child(0).grab_focus()
 
 			set_node_visibility(0, false, false)
 
@@ -99,19 +100,19 @@ func set_node_visibility(child_to_toggle: int, state_to_set: bool, set_current_t
 	return false
 
 
-func _on_outskirts_button_pressed():
+func _on_outskirts_button_focus_entered():
 	current_objective = Objectives.ObjectiveOutskirts
 
 
-func _on_dungon_button_pressed():
+func _on_dungon_button_focus_entered():
 	current_objective = Objectives.ObjectiveDungeon
 
 
-func _on_pit_button_pressed():
+func _on_pit_button_focus_entered():
 	current_objective = Objectives.ObjectivePit
 
 
-func _on_tower_button_pressed():
+func _on_tower_button_focus_entered():
 	current_objective = Objectives.ObjectiveTower
 
 

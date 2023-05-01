@@ -114,10 +114,10 @@ bus = &"Effects"
 stream = ExtResource("6_0ojhg")
 bus = &"Effects"
 
-[connection signal="pressed" from="MenuBar/OutskirtsButton" to="." method="_on_outskirts_button_pressed"]
-[connection signal="pressed" from="MenuBar/DungonButton" to="." method="_on_dungon_button_pressed"]
-[connection signal="pressed" from="MenuBar/PitButton" to="." method="_on_pit_button_pressed"]
-[connection signal="pressed" from="MenuBar/TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="focus_entered" from="MenuBar/OutskirtsButton" to="." method="_on_outskirts_button_focus_entered"]
+[connection signal="focus_entered" from="MenuBar/DungonButton" to="." method="_on_dungon_button_focus_entered"]
+[connection signal="focus_entered" from="MenuBar/PitButton" to="." method="_on_pit_button_focus_entered"]
+[connection signal="focus_entered" from="MenuBar/TowerButton" to="." method="_on_tower_button_focus_entered"]
 [connection signal="body_entered" from="QuestHubArea" to="." method="_on_quest_hub_area_body_entered"]
 [connection signal="body_exited" from="QuestHubArea" to="." method="_on_quest_hub_area_body_exited"]
 [connection signal="body_entered" from="DungeonQuestObjectiveArea" to="." method="_on_dungeon_quest_objective_area_body_entered"]
