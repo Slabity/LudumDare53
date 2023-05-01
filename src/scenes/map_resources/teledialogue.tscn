@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://65lwf77qgod7"]
+
+[ext_resource type="Script" path="res://src/scenes/map_resources/teledialogue.gd" id="1_xrgbl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er238"]
+bg_color = Color(0.247059, 0.6, 0.231373, 1)
+
+[node name="teledialogue" type="Node2D"]
+script = ExtResource("1_xrgbl")
+teleport_duration = 1.2
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Teleporting home..."
+
+[node name="ProgressBar" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = 24.0
+offset_right = 149.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_er238")

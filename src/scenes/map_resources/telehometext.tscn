@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://2pjica0fckka"]
+
+[ext_resource type="Texture2D" uid="uid://cwyg4tgu3yidt" path="res://assets/keys/F_Key_Dark.png" id="1_b5ulp"]
+[ext_resource type="Texture2D" uid="uid://c14hw40pc5g1j" path="res://assets/keys/XboxSeriesX_X.png" id="2_48ymt"]
+
+[node name="telehometext" type="Node2D"]
+
+[node name="FToInteractWithHub" type="Sprite2D" parent="."]
+position = Vector2(-26, -2.38419e-07)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("1_b5ulp")
+
+[node name="XboxSeriesXX" type="Sprite2D" parent="FToInteractWithHub"]
+position = Vector2(-94.1176, 2.35286)
+scale = Vector2(0.917647, 0.917647)
+texture = ExtResource("2_48ymt")
+
+[node name="Label" type="Label" parent="."]
+offset_top = -12.0
+offset_right = 179.0
+offset_bottom = 14.0
+text = "Hold To Teleport Home"

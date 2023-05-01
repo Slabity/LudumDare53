@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/scenes/player/player.tscn" id="3_7ghew"]
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
 [ext_resource type="PackedScene" uid="uid://daxhgpltoij7t" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
+[ext_resource type="PackedScene" uid="uid://65lwf77qgod7" path="res://src/scenes/map_resources/teledialogue.tscn" id="4_y6t5r"]
+[ext_resource type="PackedScene" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="5_ocb13"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="5_pyokv"]
@@ -19,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
 [ext_resource type="AudioStream" uid="uid://bn1x8cwbijdkk" path="res://assets/music/thats_it_for_today_intro.mp3" id="13_o6fe6"]
 [ext_resource type="AudioStream" uid="uid://0h43bhfe3jvh" path="res://assets/music/thats_it_for_today_loop.mp3" id="14_ao3op"]
+[ext_resource type="PackedScene" uid="uid://2pjica0fckka" path="res://src/scenes/map_resources/telehometext.tscn" id="18_uujh4"]
 
 [node name="map001" type="Node2D"]
 script = ExtResource("1_vle44")
+origin = Vector2(40, -60)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -34,6 +38,11 @@ layer_0/tile_data = PackedInt32Array(7930149, 131073, 2, 7864613, 131073, 1, 779
 [node name="Player" parent="." instance=ExtResource("3_7ghew")]
 position = Vector2(41, -49)
 collision_mask = 3
+
+[node name="teledialogue" parent="Player" instance=ExtResource("4_y6t5r")]
+position = Vector2(-19, -28)
+scale = Vector2(0.309, 0.309)
+enabled = true
 
 [node name="GelatenousCube" type="Sprite2D" parent="."]
 z_index = -1
@@ -92,11 +101,6 @@ position = Vector2(603, 116)
 position = Vector2(-2274, -431)
 
 [node name="QuestSystem" parent="." instance=ExtResource("8_wkkd2")]
-
-[node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
-modulate = Color(0.733333, 0.733333, 0.733333, 1)
-position = Vector2(-84, 42)
-scale = Vector2(0.738443, 0.738443)
 
 [node name="BackgroundFlags" type="Node2D" parent="."]
 visible = false
@@ -195,6 +199,27 @@ stream = ExtResource("14_ao3op")
 volume_db = -9.904
 bus = &"Music"
 
+[node name="telehometext" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(6707, 1266)
+
+[node name="telehometext2" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(-4454, 3206)
+
+[node name="telehometext3" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(-6722, -1624)
+
+[node name="telehometext4" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(3107, -4597)
+
+[node name="telehometext5" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(-3133, -191)
+
+[node name="telehometext6" parent="." instance=ExtResource("18_uujh4")]
+position = Vector2(2658, -268)
+
+[connection signal="teleport" from="Player/teledialogue" to="." method="_on_teledialogue_teleport"]
+[connection signal="hub_enter" from="QuestSystem" to="." method="_on_quest_system_hub_enter"]
+[connection signal="hub_leave" from="QuestSystem" to="." method="_on_quest_system_hub_leave"]
 [connection signal="quest_completed" from="QuestSystem" to="." method="_on_quest_system_quest_completed"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
 [connection signal="quest_started" from="QuestSystem" to="." method="_on_quest_system_quest_started"]

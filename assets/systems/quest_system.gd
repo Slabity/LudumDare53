@@ -15,6 +15,9 @@ var BestTime = {
 	Outskirts = 999999999999999999,
 }
 
+signal hub_leave
+signal hub_enter
+
 @onready var sound_quest_complete = $QuestComplete
 @onready var sound_quest_update = $QuestUpdate
 
@@ -73,9 +76,11 @@ func ProcessCounterTheft():
 func _on_quest_hub_area_body_entered(body):
 	player_is_in_quest_hub = true
 	set_node_visibility(0, true, false)
+	hub_enter.emit()
 
 
 func _on_quest_hub_area_body_exited(body):
+	hub_leave.emit()
 	player_is_in_quest_hub = false
 	var node = get_child(0)
 	if node != null:

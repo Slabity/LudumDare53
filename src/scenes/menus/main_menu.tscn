@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5qfihi01x3kj"]
+[gd_scene load_steps=5 format=3 uid="uid://b5qfihi01x3kj"]
 
 [ext_resource type="Script" path="res://src/scenes/menus/main_menu.gd" id="1_f3o8o"]
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_u2wjf"]
 [ext_resource type="PackedScene" uid="uid://bw2bo3qiovw20" path="res://src/scenes/menus/settings_menu.tscn" id="2_y0mua"]
+[ext_resource type="PackedScene" uid="uid://i5cq5yk66yv7" path="res://src/scenes/map_resources/tutorialvert.tscn" id="3_03rb4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -44,6 +45,12 @@ text = "Credits
 [node name="QuitButton" type="Button" parent="MainButtons"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Panel" type="Panel" parent="MainButtons"]
+layout_mode = 2
+
+[node name="tutorial2" parent="MainButtons/Panel" instance=ExtResource("3_03rb4")]
+position = Vector2(-311, -138)
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_y0mua")]
 visible = false
