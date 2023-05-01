@@ -13,9 +13,19 @@ func _unhandled_input(event: InputEvent):
 			pause()
 
 
-func switch_to_menu(menu_name: String):
+func open_main():
+	switch_to_menu($MainButtons)
+	$MainButtons/ResumeButton.grab_focus()
+
+
+func open_settings():
+	switch_to_menu($SettingsMenu)
+	$SettingsMenu.open_main_settings()
+
+
+func switch_to_menu(menu: Node):
 	current_menu.hide()
-	current_menu = get_node(menu_name)
+	current_menu = menu
 	current_menu.show()
 
 
@@ -24,7 +34,7 @@ func _on_resume_button_pressed():
 
 
 func _on_settings_button_pressed():
-	switch_to_menu("SettingsMenu")
+	open_settings()
 
 
 func _on_exit_to_main_menu_button_pressed():
@@ -33,11 +43,12 @@ func _on_exit_to_main_menu_button_pressed():
 
 
 func _on_settings_menu_exit_menu():
-	switch_to_menu("MainButtons")
+	open_main()
 
 
 func pause():
 	get_tree().paused = true
+	open_main()
 	show()
 
 

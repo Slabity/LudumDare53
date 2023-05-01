@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5qfihi01x3kj"]
+[gd_scene load_steps=4 format=3 uid="uid://b5qfihi01x3kj"]
 
 [ext_resource type="Script" path="res://src/scenes/menus/main_menu.gd" id="1_f3o8o"]
-[ext_resource type="PackedScene" uid="uid://dkld2fwdovoqb" path="res://src/scenes/menus/settings/settings_menu.tscn" id="2_y0mua"]
+[ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_u2wjf"]
+[ext_resource type="PackedScene" uid="uid://bw2bo3qiovw20" path="res://src/scenes/menus/settings_menu.tscn" id="2_y0mua"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u2wjf")
 script = ExtResource("1_f3o8o")
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
@@ -15,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.5
-offset_right = 100.0
-offset_bottom = 50.5
+offset_left = -250.0
+offset_top = -52.0
+offset_right = 250.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -26,9 +32,9 @@ grow_vertical = 2
 layout_mode = 2
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="MainButtons"]
+[node name="SettingsButton" type="Button" parent="MainButtons"]
 layout_mode = 2
-text = "Options"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="MainButtons"]
 layout_mode = 2
@@ -46,6 +52,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [connection signal="pressed" from="MainButtons/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainButtons/SettingsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="exit_menu" from="SettingsMenu" to="." method="_on_settings_menu_exit_menu"]

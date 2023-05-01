@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://s7ybuh7pont2"]
+
+[ext_resource type="FontFile" uid="uid://p1hm7nyta2kc" path="res://assets/PublicPixel.ttf" id="1_eu802"]
+
+[resource]
+default_font = ExtResource("1_eu802")
+default_font_size = 24
+Button/colors/font_focus_color = Color(0, 0.25098, 1, 1)

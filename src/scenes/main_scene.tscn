@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq7868th46tvw"]
+[gd_scene load_steps=7 format=3 uid="uid://cq7868th46tvw"]
 
 [ext_resource type="Script" path="res://src/scenes/main_scene.gd" id="1_2l7t8"]
+[ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_db1ta"]
 [ext_resource type="PackedScene" uid="uid://b5qfihi01x3kj" path="res://src/scenes/menus/main_menu.tscn" id="1_s2i35"]
 [ext_resource type="Texture2D" uid="uid://dqb2hh3n06xv7" path="res://assets/GeneralArt/WorkerWIP.png" id="3_yfchj"]
 [ext_resource type="Texture2D" uid="uid://bsjlo6b1j6xyx" path="res://assets/GeneralArt/Chaser.png" id="4_6l1ht"]
@@ -15,48 +16,40 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_db1ta")
 script = ExtResource("1_2l7t8")
 
-[node name="MainMenu" parent="." instance=ExtResource("1_s2i35")]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -50.5
-offset_right = 103.0
-offset_bottom = 50.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuBounceCat" type="Sprite2D" parent="."]
+[node name="MainMenu" parent="CenterContainer" instance=ExtResource("1_s2i35")]
+layout_mode = 2
+
+[node name="MenuBounceCat" type="Sprite2D" parent="CenterContainer"]
 position = Vector2(898, 454)
 scale = Vector2(0.270827, 0.270827)
 texture = ExtResource("3_yfchj")
 script = ExtResource("4_nr25p")
 
-[node name="MenuBounceChaser" type="Sprite2D" parent="."]
+[node name="MenuBounceChaser" type="Sprite2D" parent="CenterContainer"]
 position = Vector2(211, 209)
 scale = Vector2(0.357635, 0.357635)
 texture = ExtResource("4_6l1ht")
 script = ExtResource("4_nr25p")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(28.7793, 16.44)
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[connection signal="exit_menu" from="MainMenu" to="." method="_on_main_menu_exit_menu"]
-[connection signal="play_game" from="MainMenu" to="." method="_on_main_menu_play_game"]
+[connection signal="exit_menu" from="CenterContainer/MainMenu" to="." method="_on_main_menu_exit_menu"]
+[connection signal="play_game" from="CenterContainer/MainMenu" to="." method="_on_main_menu_play_game"]
