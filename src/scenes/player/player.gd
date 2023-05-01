@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-# List of movement tech (for testing purposes):
-# - Neutral jumps, wall kicks
-# - Up and down wall bounces
-# - Hypers and reverse hypers
-# - Coyote time on dashes (for hypers), jumps, and wall bounces
+var powers = [
+	PlayerPower.GRAPPLE_KICK, PlayerPower.GRAPPLE, PlayerPower.DASH_KICK, PlayerPower.DASH
+]
 
 enum Cooldowns {
 	DASH,
@@ -31,6 +29,7 @@ enum Cooldowns {
 # @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite
 @onready var cooldowns = $Cooldowns
+@onready var grapple_node = $grapple_hook
 # @onready var dash_particles = $DashParticles
 
 @export var air_momentum = 0.96  # Higher is more drag.
@@ -41,6 +40,7 @@ enum Cooldowns {
 @export var dash_length = 0.2  # Duration of dash effect - how long we fast.
 @export var dash_limit = 0.4  # Cooldown between dashes (unless other tech is used)
 @export var dash_reset_early = 0.16
+@export var dash_timed_reset = 2.0  # Time based dash reset.
 @export var gravity_multiplier = 1.2
 @export var gravity_input_control_up = 0.9
 @export var gravity_input_control_down = 1.1
@@ -48,8 +48,8 @@ enum Cooldowns {
 @export var wall_kick_speed = 300.0
 @export var wall_hard_kick_speed = 1.3
 @export var wall_hard_kick_influence = 1.5  # multipler on movement away from wall post kick.
-@export var wall_bounce_speed = Vector2(1.2, 1.2)
-@export var hyper_speed = 700.0
+@export var wall_bounce_speed = Vector2(4, 2)
+@export var hyper_speed = 1.5
 @export var hyper_speed_long = 350.0
 @export var coyote_time = 0.1  # Coyote time: ability to jump after recently leaving the ground.
 @export var grapple_kick_strength = 25.0
@@ -59,8 +59,10 @@ enum Cooldowns {
 @export var grapple_swing_ratio = 0.06  # How much the velocity influences the swing force.
 @export var grapple_max_force = 18.0
 
+var _has_dash_power = true
 var _dash_dir = Vector2.ZERO
-var _can_dash = true
+var _can_dash = true:
+	set = set_can_dash
 var _dash_trail_tick = false
 var _pre_dash_velocity = Vector2.ZERO
 
@@ -84,6 +86,29 @@ func _input(event):
 	pass
 	# if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 	# 	force_to(get_global_mouse_position())
+
+
+func set_can_dash(val):
+	if not _has_dash_power:
+		_can_dash = false
+	else:
+		_can_dash = val
+
+
+func remove_power(power):
+	powers.erase(power)
+	match power:
+		PlayerPower.GRAPPLE_KICK:
+			grapple_kick_strength = 0
+			grapple_spring_const *= 0.5
+			grapple_damp_const *= 2.0
+		PlayerPower.GRAPPLE:
+			grapple_node.enabled = false
+		PlayerPower.DASH_KICK:
+			hyper_speed = 0.5
+			wall_bounce_speed = Vector2(1.0, 1.0)
+		PlayerPower.DASH:
+			_has_dash_power = false
 
 
 # Forcibly move character to position.
@@ -111,10 +136,6 @@ func _on_force_to_finished():
 	tween.stop()
 	_forced_movement = false
 	velocity = Vector2.ZERO
-
-
-func _on_dash_timeout():
-	pass
 
 
 func _physics_process(delta):
@@ -289,7 +310,7 @@ func _check_jump(input_dir):
 			velocity.y = -speed.y
 			if (_dashing() or cooldowns.exists(Cooldowns.COYOTE_DASH)) and _dash_dir.y >= 0:
 				cooldowns.remove_no_callback(Cooldowns.DASH)
-				velocity.x = input_dir.x * hyper_speed
+				velocity.x *= abs(input_dir.x * hyper_speed)
 				cooldowns.add(Cooldowns.HYPER, 0.35)
 				if !cooldowns.exists(Cooldowns.DASH_EARLY):
 					_can_dash = true
@@ -306,7 +327,7 @@ func _check_dash(input_dir):
 		_dash_dir = input_dir
 		_can_dash = false
 		_pre_dash_velocity = velocity
-		cooldowns.add(Cooldowns.DASH, dash_length, self, "_on_dash_timeout")
+		cooldowns.add(Cooldowns.DASH, dash_length)
 		cooldowns.add(Cooldowns.DASH_LIMIT, dash_limit)
 		cooldowns.add(Cooldowns.DASH_EARLY, dash_reset_early)
 
