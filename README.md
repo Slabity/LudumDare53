@@ -10,3 +10,4 @@ Project for Ludum Dare 53
 * [Xelu's controller prompts](https://thoseawesomeguys.com/prompts/)
 * [Chain link visual](https://gitlab.com/godotdemos/hook-demo)
 * [Sound effects](https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack)
+* [PublicPixel font](https://www.fontspace.com/public-pixel-font-f72305)
