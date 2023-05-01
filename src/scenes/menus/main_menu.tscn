@@ -15,6 +15,7 @@ theme = ExtResource("1_u2wjf")
 script = ExtResource("1_f3o8o")
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,6 +37,11 @@ text = "Play"
 layout_mode = 2
 text = "Settings"
 
+[node name="CreditsButton" type="Button" parent="MainButtons"]
+layout_mode = 2
+text = "Credits
+"
+
 [node name="QuitButton" type="Button" parent="MainButtons"]
 layout_mode = 2
 text = "Quit"
@@ -51,7 +57,46 @@ anchor_bottom = 0.5
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
+[node name="Credits" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -130.0
+offset_right = 250.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_u2wjf")
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 2
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "* [Reaper character art](https://samuellee.itch.io/reaper-animated-pixel-art)
+* [Background music](https://opengameart.org/content/cheerful-upbeat-tune) created by ViRiX Dreamcore (David Mckee). www.virixcore.net for more information
+* [Tileset](https://pixelfrog-assets.itch.io/kings-and-pigs)
+* [Xelu's controller prompts](https://thoseawesomeguys.com/prompts/)
+* [Chain link visual](https://gitlab.com/godotdemos/hook-demo)
+* [Sound effects](https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CreditsBackButton" type="Button" parent="Credits"]
+layout_mode = 2
+text = "Back"
+
 [connection signal="pressed" from="MainButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainButtons/SettingsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="exit_menu" from="SettingsMenu" to="." method="_on_settings_menu_exit_menu"]
+[connection signal="pressed" from="Credits/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]

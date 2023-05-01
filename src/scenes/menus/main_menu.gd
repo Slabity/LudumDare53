@@ -16,6 +16,11 @@ func open_settings():
 	$SettingsMenu.open_main_settings()
 
 
+func open_credits():
+	switch_to_menu($Credits)
+	$Credits/CreditsBackButton.grab_focus()
+
+
 func switch_to_menu(menu: Node):
 	current_menu.hide()
 	current_menu = menu
@@ -30,9 +35,17 @@ func _on_options_button_pressed():
 	open_settings()
 
 
+func _on_credits_button_pressed():
+	open_credits()
+
+
 func _on_quit_button_pressed():
 	exit_menu.emit()
 
 
 func _on_settings_menu_exit_menu():
+	open_main()
+
+
+func _on_credits_back_button_pressed():
 	open_main()
