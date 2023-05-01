@@ -1,5 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://y8hpdvbuk7i5"]
-
+[gd_scene load_steps=14 format=3 uid="uid://y8hpdvbuk7i5"]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
@@ -14,15 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
 [ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="10_4qky2"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
-size = Vector2(30, 398)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eno2c"]
-bg_color = Color(0.6, 0, 0.0666667, 0.360784)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1q1g"]
-size = Vector2(82, 93)
 
 [node name="map001" type="Node2D"]
 script = ExtResource("1_vle44")
@@ -71,47 +61,13 @@ visible = false
 position = Vector2(-283, 136)
 texture = ExtResource("5_pyokv")
 
-[node name="StartArea" type="Area2D" parent="."]
-visible = false
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartArea"]
-position = Vector2(280, 7)
-shape = SubResource("RectangleShape2D_osk7d")
-
-[node name="Panel" type="Panel" parent="StartArea"]
-offset_left = 264.0
-offset_top = -193.0
-offset_right = 293.0
-offset_bottom = 201.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
-metadata/_edit_use_anchors_ = true
-
-[node name="WinArea" type="Area2D" parent="."]
-visible = false
-position = Vector2(1789, -178)
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="WinArea"]
-offset_left = -36.0
-offset_top = -39.0
-offset_right = -7.0
-offset_bottom = 355.0
-scale = Vector2(2.68, 0.2)
-theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
-position = Vector2(2, -1)
-shape = SubResource("RectangleShape2D_b1q1g")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="GelatenousCube" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-4467, 3321)
 scale = Vector2(0.0789305, 0.0742089)
 texture = ExtResource("5_65hsb")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="HubBaseBackground" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(91, -129)
 scale = Vector2(0.248771, 0.248771)
@@ -165,6 +121,7 @@ position = Vector2(-2274, -431)
 
 [node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
 position = Vector2(-1, -265)
+
 [node name="BackgroundFlags" type="Node2D" parent="."]
 visible = false
 
@@ -203,8 +160,6 @@ scale = Vector2(1, 18.2956)
 position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
 
-[connection signal="body_entered" from="StartArea" to="." method="_on_start_area_body_entered"]
-[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="quest_completed" from="QuestSystem" to="." method="_on_quest_system_quest_completed"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
 [connection signal="quest_started" from="QuestSystem" to="." method="_on_quest_system_quest_started"]
