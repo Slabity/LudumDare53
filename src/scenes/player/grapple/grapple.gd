@@ -63,7 +63,7 @@ func _input(event: InputEvent) -> void:
 				fire_grapple(get_local_mouse_position())
 			elif event is InputEventJoypadButton:
 				var target_position = Vector2(
-					Input.get_joy_axis(0, JOY_AXIS_RIGHT_X), Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+					Input.get_joy_axis(0, JOY_AXIS_LEFT_X), Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
 				)
 				# Apply a deadzone. Shoots up by default.
 				if target_position.length() < 0.2:
