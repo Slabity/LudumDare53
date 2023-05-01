@@ -51,6 +51,7 @@ func _physics_process(delta):
 			set_node_visibility(0, false, false)
 		if Input.is_action_just_released("select"):
 			set_node_visibility(5, false, false)
+			set_node_visibility(0, true, false)
 
 
 func ProcessTheft(thief):
