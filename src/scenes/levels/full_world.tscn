@@ -1,4 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://y8hpdvbuk7i5"]
+[gd_scene load_steps=20 format=3 uid="uid://y8hpdvbuk7i5"]
+
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
@@ -6,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
 [ext_resource type="PackedScene" uid="uid://1q5esfkbc0ii" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
+[ext_resource type="Theme" path="res://assets/primary_theme.tres" id="5_ocb13"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="5_pyokv"]
 [ext_resource type="Texture2D" uid="uid://disvcddm1rwev" path="res://assets/GeneralArt/PizzaHouseBackground.png" id="6_qe8oe"]
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="7_81pba"]
@@ -50,6 +52,7 @@ offset_left = -283.0
 offset_top = 136.0
 offset_right = -238.0
 offset_bottom = 162.0
+theme = ExtResource("5_ocb13")
 text = "Timer
 "
 metadata/_edit_use_anchors_ = true
@@ -60,7 +63,9 @@ offset_left = -338.0
 offset_top = -25.0
 offset_right = 339.0
 offset_bottom = 17.0
-placeholder_text = "You Did It! Final Time: 00:00:00"
+theme = ExtResource("5_ocb13")
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Delivery Complete! Final Time: 00:00:00"
 alignment = 1
 
 [node name="FloatingQuestIndicator" type="Sprite2D" parent="Camera2D"]
@@ -114,51 +119,51 @@ position = Vector2(91, -129)
 scale = Vector2(0.248771, 0.248771)
 texture = ExtResource("6_qe8oe")
 
-[node name="EnemyHodler" type="Node2D" parent="."]
+[node name="EnemyHolder" type="Node2D" parent="."]
 
-[node name="Enemy12" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy14" parent="EnemyHolder" instance=ExtResource("7_81pba")]
+position = Vector2(4439, 1812)
+
+[node name="Enemy12" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-3436, -1160)
 
-[node name="Enemy13" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy13" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-4374, -328)
 
-[node name="Enemy9" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy9" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(3957, -575)
 
-[node name="Enemy10" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy10" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-4943, -449)
 
-[node name="Enemy11" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy11" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-5472, -1674)
 
-[node name="Enemy3" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy3" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-3611, 1811)
 
-[node name="Enemy4" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy4" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-4587, 1878)
 
-[node name="Enemy5" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy5" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-3692, 1331)
 
-[node name="Enemy6" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy6" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-3845, 893)
 
-[node name="Enemy7" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy7" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(3403, 2392)
 
-[node name="Enemy8" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy8" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(3756, 2399)
 
-[node name="Enemy2" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy2" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(603, 116)
 
-[node name="Enemy" parent="EnemyHodler" instance=ExtResource("7_81pba")]
+[node name="Enemy" parent="EnemyHolder" instance=ExtResource("7_81pba")]
 position = Vector2(-2274, -431)
 
 [node name="QuestSystem" parent="." instance=ExtResource("8_wkkd2")]
-
-[node name="Enemy" parent="." instance=ExtResource("7_81pba")]
-position = Vector2(4439, 1812)
 
 [node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
 position = Vector2(-1, -265)
@@ -214,7 +219,9 @@ bus = &"Music"
 
 [connection signal="body_entered" from="StartArea" to="." method="_on_start_area_body_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
+[connection signal="quest_completed" from="QuestSystem" to="." method="_on_quest_system_quest_completed"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
+[connection signal="quest_started" from="QuestSystem" to="." method="_on_quest_system_quest_started"]
 [connection signal="target_set" from="QuestSystem" to="Camera2D" method="_on_quest_system_target_set"]
 [connection signal="body_entered" from="BackgroundFlags/TowerEntryFlag" to="Player/background_display" method="_set_background" binds= ["tower"]]
 [connection signal="body_entered" from="BackgroundFlags/TowerExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]

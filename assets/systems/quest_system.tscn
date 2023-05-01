@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="4_4abda"]
 [ext_resource type="AudioStream" uid="uid://ctwb5j8bsqc0h" path="res://assets/level/quest_complete.wav" id="5_3uie5"]
 [ext_resource type="AudioStream" uid="uid://becrrdricm7h" path="res://assets/level/quest_update.wav" id="6_1vsc5"]
+[ext_resource type="Theme" path="res://assets/primary_theme.tres" id="4_4abda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0bo1"]
 size = Vector2(259, 196)
