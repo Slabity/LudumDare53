@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6w4pmxvcm0pp"
-path="res://.godot/imported/City.png-583b88a793f69c9c16905396ba35abc0.ctex"
+uid="uid://cmbvwlqw2g3g0"
+path="res://.godot/imported/Dungeon.png-2ea3c0d8a09467fe80d0f27bf8f43eaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/background_stuff/BackgroundArt/City.png"
-dest_files=["res://.godot/imported/City.png-583b88a793f69c9c16905396ba35abc0.ctex"]
+source_file="res://BackgroundArt/Dungeon.png"
+dest_files=["res://.godot/imported/Dungeon.png-2ea3c0d8a09467fe80d0f27bf8f43eaf.ctex"]
 
 [params]
 

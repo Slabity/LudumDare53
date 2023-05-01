@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://daxhgpltoij7t"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/background_stuff/background_image.gd" id="1_jjhqj"]
-[ext_resource type="Texture2D" uid="uid://b6w4pmxvcm0pp" path="res://src/scenes/background_stuff/BackgroundArt/City.png" id="2_sfrgj"]
-[ext_resource type="Texture2D" uid="uid://bv5g46yns6uih" path="res://src/scenes/background_stuff/BackgroundArt/Pits.png" id="3_mieng"]
-[ext_resource type="Texture2D" uid="uid://rpy54wydrnvb" path="res://src/scenes/background_stuff/BackgroundArt/Tower.png" id="4_4r1b1"]
-[ext_resource type="Texture2D" uid="uid://cvadfrb1mrr8b" path="res://src/scenes/background_stuff/BackgroundArt/Outskirts.png" id="5_0ouis"]
-[ext_resource type="Texture2D" uid="uid://cmbvwlqw2g3g0" path="res://src/scenes/background_stuff/BackgroundArt/Dungeon.png" id="6_bs3dn"]
+[ext_resource type="Texture2D" uid="uid://b6w4pmxvcm0pp" path="res://BackgroundArt/City.png" id="2_sfrgj"]
+[ext_resource type="Texture2D" uid="uid://bv5g46yns6uih" path="res://BackgroundArt/Pits.png" id="3_mieng"]
+[ext_resource type="Texture2D" uid="uid://rpy54wydrnvb" path="res://BackgroundArt/Tower.png" id="4_4r1b1"]
+[ext_resource type="Texture2D" uid="uid://cvadfrb1mrr8b" path="res://BackgroundArt/Outskirts.png" id="5_0ouis"]
+[ext_resource type="Texture2D" uid="uid://cmbvwlqw2g3g0" path="res://BackgroundArt/Dungeon.png" id="6_bs3dn"]
 
 [node name="background_display" type="Node2D"]
 script = ExtResource("1_jjhqj")

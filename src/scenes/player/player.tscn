@@ -1,11 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://b74csm0kdko4a"]
+[gd_scene load_steps=36 format=3 uid="uid://b74csm0kdko4a"]
 
 [ext_resource type="Script" path="res://src/scenes/player/player.gd" id="1_kw1vg"]
 [ext_resource type="PackedScene" uid="uid://ba77kgop2fdgi" path="res://src/scenes/player/dash_trail_sprite.tscn" id="2_8kwlp"]
 [ext_resource type="PackedScene" uid="uid://b5sd73yadu1wj" path="res://src/utils/cooldowns.tscn" id="3_4k5eq"]
 [ext_resource type="Texture2D" uid="uid://bmniq7827svrg" path="res://assets/player/coin.png" id="4_evvp3"]
 [ext_resource type="PackedScene" uid="uid://dsltkjgcvxtv6" path="res://src/scenes/player/grapple/grapple.tscn" id="5_y580y"]
-[ext_resource type="PackedScene" uid="uid://daoq27b6vlwuy" path="res://src/scenes/menus/pause_menu.tscn" id="7_7v8lf"]
 [ext_resource type="Shader" path="res://src/scenes/player/outline.gdshader" id="7_mwjdq"]
 [ext_resource type="Texture2D" uid="uid://bkcsalei0rm6o" path="res://assets/player/idle.png" id="8_6suvr"]
 [ext_resource type="Texture2D" uid="uid://co8gs5wjkpldw" path="res://assets/player/dash.png" id="8_r8ioi"]
@@ -222,9 +221,6 @@ texture = ExtResource("4_evvp3")
 hframes = 4
 
 [node name="grapple_hook" parent="." instance=ExtResource("5_y580y")]
-
-[node name="PauseMenu" parent="." instance=ExtResource("7_7v8lf")]
-visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
