@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://1q5esfkbc0ii"]
+
+[ext_resource type="Script" path="res://src/scenes/background_stuff/background_image.gd" id="1_jjhqj"]
+[ext_resource type="Texture2D" uid="uid://b6w4pmxvcm0pp" path="res://src/scenes/background_stuff/BackgroundArt/City.png" id="2_sfrgj"]
+[ext_resource type="Texture2D" uid="uid://bv5g46yns6uih" path="res://src/scenes/background_stuff/BackgroundArt/Pits.png" id="3_mieng"]
+[ext_resource type="Texture2D" uid="uid://rpy54wydrnvb" path="res://src/scenes/background_stuff/BackgroundArt/Tower.png" id="4_4r1b1"]
+[ext_resource type="Texture2D" uid="uid://cvadfrb1mrr8b" path="res://src/scenes/background_stuff/BackgroundArt/Outskirts.png" id="5_0ouis"]
+[ext_resource type="Texture2D" uid="uid://cmbvwlqw2g3g0" path="res://src/scenes/background_stuff/BackgroundArt/Dungeon.png" id="6_bs3dn"]
+
+[node name="background_display" type="Node2D"]
+script = ExtResource("1_jjhqj")
+
+[node name="background_image_city" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("2_sfrgj")
+
+[node name="background_image_pits" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("3_mieng")
+
+[node name="background_image_tower" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("4_4r1b1")
+
+[node name="background_image_outskirts" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("5_0ouis")
+
+[node name="background_image_dungeon" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+texture = ExtResource("6_bs3dn")
