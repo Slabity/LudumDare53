@@ -5,33 +5,31 @@ extends Camera2D
 
 var target_node
 var quest_target_node
-var viewport : Rect2
+var viewport: Rect2
+
 
 func _ready():
 	if target_node_path:
 		target_node = get_node(target_node_path)
-	
-	
+
 
 func _process(delta):
 	if target_node:
 		position = lerp(position, target_node.global_position, lerp_speed)
-		
+
 	if quest_target_node:
 		var center = target_node.global_position
 		var distance = center.distance_to(quest_target_node)
-		if (distance > 300):
+		if distance > 300:
 			viewport = get_viewport_rect()
-			
-			
+
 			# target vector
-			var to_target_vector_normalized =  (quest_target_node - center).normalized() 
-			
-			var y = to_target_vector_normalized.y  * abs(viewport.size.y /4)
-			var x = to_target_vector_normalized.x * abs(viewport.size.x /4)
+			var to_target_vector_normalized = (quest_target_node - center).normalized()
+
+			var y = to_target_vector_normalized.y * abs(viewport.size.y / 4)
+			var x = to_target_vector_normalized.x * abs(viewport.size.x / 4)
 			var newv = Vector2(x, y)
-			
-			
+
 			var node = get_child(2)
 			if node != null:
 				node.visible = true
@@ -54,13 +52,12 @@ func _on_quest_system_quest_completed(time_completed):
 
 func _on_quest_system_target_set(target):
 	quest_target_node = target
-	
-	
-	
+
+
 """
 Finds the intersection point between
 the rectangle
-with parallel sides to the x and y axes 
+with parallel sides to the x and y axes
 the half-line pointing towards (x,y)
 originating from the middle of the rectangle
 
@@ -87,41 +84,38 @@ Warning: passing in the middle of the rectangle will return the midpoint itself
 @licence Dual CC0/WTFPL/Unlicence, whatever floats your boat
 @see <a href="http://stackoverflow.com/a/31254199/253468">source</a>
 @see <a href="http://stackoverflow.com/a/18292964/253468">based on</a>
-"""	
-	
+"""
+
+
 func pointOnRect(x, y, minX, minY, maxX, maxY):
 	#assert minX <= maxX;
 	#assert minY <= maxY;
-	
-	var midX = (minX + maxX) / 2;
-	var midY = (minY + maxY) / 2;
-	# if (midX - x == 0) -> m == ±Inf -> minYx/maxYx == x (because value / ±Inf = ±0)
-	var m = (midY - y) / (midX - x);
 
-	if (x <= midX) : # check "left" side
-		var minXy = m * (minX - x) + y;
-		if (minY <= minXy && minXy <= maxY):
+	var midX = (minX + maxX) / 2
+	var midY = (minY + maxY) / 2
+	# if (midX - x == 0) -> m == ±Inf -> minYx/maxYx == x (because value / ±Inf = ±0)
+	var m = (midY - y) / (midX - x)
+
+	if x <= midX:  # check "left" side
+		var minXy = m * (minX - x) + y
+		if minY <= minXy && minXy <= maxY:
 			return Vector2(minX, minXy)
 
-	if (x >= midX):  # check "right" side
-		var maxXy = m * (maxX - x) + y;
-		if (minY <= maxXy && maxXy <= maxY):
+	if x >= midX:  # check "right" side
+		var maxXy = m * (maxX - x) + y
+		if minY <= maxXy && maxXy <= maxY:
 			return Vector2(maxX, maxXy)
 
-	if (y <= midY): # check "top" side
-		var minYx = (minY - y) / m + x;
-		if (minX <= minYx && minYx <= maxX):
+	if y <= midY:  # check "top" side
+		var minYx = (minY - y) / m + x
+		if minX <= minYx && minYx <= maxX:
 			return Vector2(minYx, minY)
-	
 
-	if (y >= midY) : # check "bottom" side
-		var maxYx = (maxY - y) / m + x;
-		if (minX <= maxYx && maxYx <= maxX):
+	if y >= midY:  # check "bottom" side
+		var maxYx = (maxY - y) / m + x
+		if minX <= maxYx && maxYx <= maxX:
 			return Vector2(maxYx, maxY)
-	
 
 	# edge case when finding midpoint intersection: m = 0/0 = NaN
-	if (x == midX && y == midY):
+	if x == midX && y == midY:
 		return Vector2(x, y)
-
-	
