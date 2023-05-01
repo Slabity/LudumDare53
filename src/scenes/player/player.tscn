@@ -248,16 +248,17 @@ color = Color(0.678431, 0.788235, 0.909804, 1)
 
 [node name="SoundLand" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_d71j2")
-volume_db = 3.714
+volume_db = 11.147
 bus = &"Effects"
 
 [node name="SoundJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_6mcxs")
+volume_db = 9.905
 bus = &"Effects"
 
 [node name="SoundDash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_pxdml")
-volume_db = -12.382
+volume_db = -4.855
 bus = &"Effects"
 
 [connection signal="grapple_attached" from="grapple_hook" to="." method="_on_grapple_hook_grapple_attached"]

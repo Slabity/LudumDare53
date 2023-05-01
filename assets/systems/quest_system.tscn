@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://canylnpx8xtyv"]
+[gd_scene load_steps=10 format=3 uid="uid://canylnpx8xtyv"]
 
 [ext_resource type="Script" path="res://assets/systems/quest_system.gd" id="1_oxycj"]
 [ext_resource type="Texture2D" uid="uid://cwyg4tgu3yidt" path="res://assets/keys/F_Key_Dark.png" id="2_nittv"]
