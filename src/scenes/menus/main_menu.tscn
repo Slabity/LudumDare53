@@ -50,7 +50,7 @@ text = "Quit"
 layout_mode = 2
 
 [node name="tutorial2" parent="MainButtons/Panel" instance=ExtResource("3_03rb4")]
-position = Vector2(-311, -138)
+position = Vector2(-311, -52)
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_y0mua")]
 visible = false
