@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+var powers = [
+	PlayerPower.GRAPPLE_KICK, PlayerPower.GRAPPLE, PlayerPower.DASH_KICK, PlayerPower.DASH
+]
+
 enum Cooldowns {
 	DASH,
 	DASH_LIMIT,
@@ -92,6 +96,7 @@ func set_can_dash(val):
 
 
 func remove_power(power):
+	powers.erase(power)
 	match power:
 		PlayerPower.GRAPPLE_KICK:
 			grapple_kick_strength = 0

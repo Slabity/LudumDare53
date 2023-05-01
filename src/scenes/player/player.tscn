@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b74csm0kdko4a"]
+[gd_scene load_steps=9 format=3 uid="uid://b74csm0kdko4a"]
 
 [ext_resource type="Script" path="res://src/scenes/player/player.gd" id="1_kw1vg"]
 [ext_resource type="Texture2D" uid="uid://cvanx1etquv83" path="res://assets/player/robot_demo.png" id="1_pqllh"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b5sd73yadu1wj" path="res://src/utils/cooldowns.tscn" id="3_4k5eq"]
 [ext_resource type="Texture2D" uid="uid://bmniq7827svrg" path="res://assets/player/coin.png" id="4_evvp3"]
 [ext_resource type="PackedScene" uid="uid://dsltkjgcvxtv6" path="res://src/scenes/player/grapple/grapple.tscn" id="5_y580y"]
+[ext_resource type="PackedScene" uid="uid://daoq27b6vlwuy" path="res://src/scenes/menus/pause_menu.tscn" id="7_7v8lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mqu2"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_kw1vg")
 dash_trail_sprite = ExtResource("2_8kwlp")
 
@@ -44,6 +45,9 @@ texture = ExtResource("4_evvp3")
 hframes = 4
 
 [node name="grapple_hook" parent="." instance=ExtResource("5_y580y")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_7v8lf")]
+visible = false
 
 [connection signal="grapple_attached" from="grapple_hook" to="." method="_on_grapple_hook_grapple_attached"]
 [connection signal="grapple_detached" from="grapple_hook" to="." method="_on_grapple_hook_grapple_detached"]

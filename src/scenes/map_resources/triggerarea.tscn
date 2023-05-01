@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://crj3nasx65tg7"]
+[gd_scene load_steps=4 format=3 uid="uid://crj3nasx65tg7"]
+
+[ext_resource type="Script" path="res://src/scenes/map_resources/triggerarea.gd" id="1_kp6v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
 size = Vector2(84, 77)
@@ -7,6 +9,7 @@ size = Vector2(84, 77)
 bg_color = Color(0.6, 0, 0.0666667, 0.360784)
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_kp6v1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -20,3 +23,5 @@ offset_bottom = 355.0
 scale = Vector2(2.89174, 0.19582)
 theme_override_styles/panel = SubResource("StyleBoxFlat_eno2c")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

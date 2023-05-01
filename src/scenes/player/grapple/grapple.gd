@@ -12,11 +12,18 @@ extends Node2D
 signal grapple_attached(hook_location: Vector2)  # global position
 signal grapple_detached
 
-var enabled = true
+var enabled = true:
+	set = set_enabled
 
 var firing = false
 var will_hook = false
 var target_pos = Vector2.ZERO
+
+
+func set_enabled(value):
+	firing = false
+	grapple_detached.emit()
+	enabled = value
 
 
 func _process(delta):

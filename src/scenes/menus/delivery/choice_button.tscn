@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2hjt6e6wj006"]
+
+[ext_resource type="Script" path="res://src/scenes/menus/delivery/choice_button.gd" id="1_mtwab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmhci"]
+
+[node name="ChoiceButton" type="VBoxContainer"]
+theme_override_constants/separation = 30
+script = ExtResource("1_mtwab")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kmhci")
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 2
+text = "This is a description"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
