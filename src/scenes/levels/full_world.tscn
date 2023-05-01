@@ -35,67 +35,6 @@ layer_0/tile_data = PackedInt32Array(7930149, 131073, 2, 7864613, 131073, 1, 779
 position = Vector2(41, -49)
 collision_mask = 3
 
-[node name="Camera2D" parent="." instance=ExtResource("4_v8kh4")]
-zoom = Vector2(1.7, 1.7)
-target_node_path = NodePath("../Player")
-
-[node name="Timer" type="Label" parent="Camera2D"]
-offset_left = -283.0
-offset_top = 136.0
-offset_right = -238.0
-offset_bottom = 162.0
-theme = ExtResource("5_ocb13")
-text = "Timer
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="VictoryText" type="LineEdit" parent="Camera2D"]
-visible = false
-offset_left = -338.0
-offset_top = -43.0
-offset_right = 339.0
-offset_bottom = -1.0
-theme = ExtResource("5_ocb13")
-theme_override_font_sizes/font_size = 15
-placeholder_text = "Delivery Complete! Final Time: 00:00:00"
-alignment = 1
-
-[node name="BestTimeText" type="LineEdit" parent="Camera2D"]
-visible = false
-offset_left = -338.0
-offset_right = 339.0
-offset_bottom = 42.0
-theme = ExtResource("5_ocb13")
-theme_override_font_sizes/font_size = 15
-placeholder_text = "Best Time: 00:00:00"
-alignment = 1
-
-[node name="FloatingQuestIndicator" type="Sprite2D" parent="Camera2D"]
-visible = false
-position = Vector2(-283, 136)
-texture = ExtResource("5_pyokv")
-
-[node name="background_display" parent="Camera2D" instance=ExtResource("4_yva5e")]
-position = Vector2(41, -49)
-
-[node name="PauseMenu" parent="Camera2D" instance=ExtResource("8_1ytbg")]
-visible = false
-
-[node name="Bird" type="Sprite2D" parent="."]
-position = Vector2(3074, -4482)
-scale = Vector2(0.143056, 0.139153)
-texture = ExtResource("9_y4qbc")
-
-[node name="Squid" type="Sprite2D" parent="."]
-position = Vector2(-6673, -1587)
-scale = Vector2(0.143056, 0.139153)
-texture = ExtResource("10_emqnp")
-
-[node name="Cerberwhat" type="Sprite2D" parent="."]
-position = Vector2(6858, 1363)
-scale = Vector2(0.272757, 0.255482)
-texture = ExtResource("9_cny2i")
-
 [node name="GelatenousCube" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-4467, 3321)
@@ -196,6 +135,52 @@ scale = Vector2(1, 18.2956)
 [node name="PitsEntryFlag" parent="BackgroundFlags" instance=ExtResource("11_a0kwl")]
 position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
+
+[node name="Camera2D" parent="." instance=ExtResource("4_v8kh4")]
+zoom = Vector2(1.7, 1.7)
+target_node_path = NodePath("../Player")
+
+[node name="Timer" type="Label" parent="Camera2D"]
+offset_left = -283.0
+offset_top = 136.0
+offset_right = -238.0
+offset_bottom = 162.0
+theme = ExtResource("5_ocb13")
+text = "Timer
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="VictoryText" type="LineEdit" parent="Camera2D"]
+visible = false
+offset_left = -338.0
+offset_top = -43.0
+offset_right = 339.0
+offset_bottom = -1.0
+theme = ExtResource("5_ocb13")
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Delivery Complete! Final Time: 00:00:00"
+alignment = 1
+
+[node name="BestTimeText" type="LineEdit" parent="Camera2D"]
+visible = false
+offset_left = -338.0
+offset_right = 339.0
+offset_bottom = 42.0
+theme = ExtResource("5_ocb13")
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Best Time: 00:00:00"
+alignment = 1
+
+[node name="FloatingQuestIndicator" type="Sprite2D" parent="Camera2D"]
+visible = false
+position = Vector2(-283, 136)
+texture = ExtResource("5_pyokv")
+
+[node name="background_display" parent="Camera2D" instance=ExtResource("4_yva5e")]
+position = Vector2(41, -49)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("8_1ytbg")]
+visible = false
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
 process_mode = 3
