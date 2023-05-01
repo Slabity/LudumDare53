@@ -4,22 +4,22 @@
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/scenes/player/player.tscn" id="3_7ghew"]
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
-[ext_resource type="PackedScene" uid="uid://65lwf77qgod7" path="res://src/scenes/map_resources/teledialogue.tscn" id="4_y6t5r"]
+[ext_resource type="PackedScene" path="res://src/scenes/map_resources/teledialogue.tscn" id="4_y6t5r"]
 [ext_resource type="PackedScene" uid="uid://daxhgpltoij7t" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="5_ocb13"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="5_pyokv"]
-[ext_resource type="Texture2D" uid="uid://disvcddm1rwev" path="res://assets/GeneralArt/PizzaHouseBackground.png" id="6_qe8oe"]
+[ext_resource type="Texture2D" uid="uid://c1f5so7osvyjh" path="res://assets/GeneralArt/RoomBox.png" id="6_0eesp"]
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="7_81pba"]
 [ext_resource type="PackedScene" uid="uid://daoq27b6vlwuy" path="res://src/scenes/menus/pause_menu.tscn" id="8_1ytbg"]
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
-[ext_resource type="Texture2D" uid="uid://k5spyfu2h56r" path="res://assets/GeneralArt/WeirdBird.png" id="9_y4qbc"]
-[ext_resource type="Texture2D" uid="uid://kvtb0pn33tjd" path="res://assets/GeneralArt/Squid.png" id="10_emqnp"]
+[ext_resource type="Texture2D" path="res://assets/GeneralArt/WeirdBird.png" id="9_y4qbc"]
+[ext_resource type="Texture2D" path="res://assets/GeneralArt/Squid.png" id="10_emqnp"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
 [ext_resource type="AudioStream" uid="uid://bn1x8cwbijdkk" path="res://assets/music/thats_it_for_today_intro.mp3" id="13_o6fe6"]
 [ext_resource type="AudioStream" uid="uid://0h43bhfe3jvh" path="res://assets/music/thats_it_for_today_loop.mp3" id="14_ao3op"]
 [ext_resource type="Texture2D" uid="uid://dslg0hkpxjr47" path="res://assets/GeneralArt/PizzaGoblin.png" id="18_tkatf"]
-[ext_resource type="PackedScene" uid="uid://2pjica0fckka" path="res://src/scenes/map_resources/telehometext.tscn" id="18_uujh4"]
+[ext_resource type="PackedScene" path="res://src/scenes/map_resources/telehometext.tscn" id="18_uujh4"]
 
 [node name="map001" type="Node2D"]
 script = ExtResource("1_vle44")
@@ -52,7 +52,7 @@ texture = ExtResource("5_65hsb")
 z_index = -1
 position = Vector2(91, -129)
 scale = Vector2(0.248771, 0.248771)
-texture = ExtResource("6_qe8oe")
+texture = ExtResource("6_0eesp")
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 
@@ -231,8 +231,6 @@ scale = Vector2(0.160375, 0.160375)
 texture = ExtResource("10_emqnp")
 
 [connection signal="teleport" from="Player/teledialogue" to="." method="_on_teledialogue_teleport"]
-[connection signal="hub_enter" from="QuestSystem" to="." method="_on_quest_system_hub_enter"]
-[connection signal="hub_leave" from="QuestSystem" to="." method="_on_quest_system_hub_leave"]
 [connection signal="quest_completed" from="QuestSystem" to="." method="_on_quest_system_quest_completed"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
 [connection signal="quest_started" from="QuestSystem" to="." method="_on_quest_system_quest_started"]
