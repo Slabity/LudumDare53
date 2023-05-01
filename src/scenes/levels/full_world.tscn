@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://x4mmb7s24rqg"]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="Texture2D" uid="uid://la6nlyf4y46j" path="res://assets/tileset.png" id="2_38wpx"]
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/scenes/player/player.tscn" id="3_7ghew"]
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
-[ext_resource type="Texture2D" uid="uid://disvcddm1rwev" path="res://assets/GeneralArt/Illustration4.png" id="6_qe8oe"]
+[ext_resource type="Texture2D" uid="uid://disvcddm1rwev" path="res://assets/GeneralArt/PizzaHouseBackground.png" id="6_qe8oe"]
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="7_81pba"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uhxtb"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://disvcddm1rwev"
-path="res://.godot/imported/Illustration4.png-e6b15f125b2a6b98572709a32846164c.ctex"
+path="res://.godot/imported/PizzaHouseBackground.png-26053d79614905a24cd6af624135ff93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GeneralArt/Illustration4.png"
-dest_files=["res://.godot/imported/Illustration4.png-e6b15f125b2a6b98572709a32846164c.ctex"]
+source_file="res://assets/GeneralArt/PizzaHouseBackground.png"
+dest_files=["res://.godot/imported/PizzaHouseBackground.png-26053d79614905a24cd6af624135ff93.ctex"]
 
 [params]
 
