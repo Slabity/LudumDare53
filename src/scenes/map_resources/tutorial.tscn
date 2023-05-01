@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://x5s5vjs8d2ul" path="res://assets/keys/XboxSeriesX_Y.png" id="8_atv27"]
 [ext_resource type="Texture2D" uid="uid://b7jm4hodnl2ds" path="res://assets/keys/Shift_Key_Dark.png" id="9_bpv8h"]
 [ext_resource type="Texture2D" uid="uid://d22g2cct327i4" path="res://assets/keys/XboxSeriesX_RB.png" id="10_ogc65"]
-[ext_resource type="Texture2D" uid="uid://co3dkwuuoimgh" path="res://assets/keys/Mouse_Left_Key_Dark.png" id="11_247we"]
 [ext_resource type="Texture2D" uid="uid://kxctmivekcw8" path="res://assets/player/link.png" id="12_etoby"]
+[ext_resource type="Texture2D" uid="uid://dl5ruc0stlnq" path="res://assets/keys/Mouse_Right_Key_Dark.png" id="12_p58am"]
 [ext_resource type="Texture2D" uid="uid://d3vkgwtfgrsd8" path="res://assets/player/grapple_hook.png" id="13_pvq12"]
 
 [node name="tutorial" type="Node2D"]
@@ -97,11 +97,6 @@ position = Vector2(22, 16)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_ogc65")
 
-[node name="MouseLeftKeyDark" type="Sprite2D" parent="Grapple"]
-position = Vector2(56, 15)
-scale = Vector2(0.205, 0.205)
-texture = ExtResource("11_247we")
-
 [node name="Links" type="Sprite2D" parent="Grapple"]
 texture_repeat = 2
 position = Vector2(125, 15)
@@ -123,3 +118,8 @@ position = Vector2(98, 12)
 texture = ExtResource("5_1yin1")
 hframes = 4
 vframes = 3
+
+[node name="MouseRightKeyDark" type="Sprite2D" parent="Grapple"]
+position = Vector2(56, 15)
+scale = Vector2(0.202796, 0.202796)
+texture = ExtResource("12_p58am")
