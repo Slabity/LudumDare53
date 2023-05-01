@@ -1,4 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://y8hpdvbuk7i5"]
+
+[gd_scene load_steps=20 format=3 uid="uid://y8hpdvbuk7i5"]
+
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]

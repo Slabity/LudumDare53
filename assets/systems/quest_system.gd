@@ -6,7 +6,9 @@ const Objectives = {
 	ObjectivePit =2,
 	ObjectiveOutskirts = 3,
 	NoObjective = 0
+
 }
+
 
 var BestTime = {
 	Tower = 999999999999999999,
@@ -81,7 +83,6 @@ func _on_quest_hub_area_body_exited(body):
 		quest_started.emit()
 		if(set_node_visibility(current_objective, true, true)):
 			target_set.emit(target)
-			sound_quest_update.play()
 
 
 func set_node_visibility(child_to_toggle: int, state_to_set: bool,set_current_target: bool):
@@ -94,7 +95,6 @@ func set_node_visibility(child_to_toggle: int, state_to_set: bool,set_current_ta
 	
 	return false
 	
-
 
 func _on_outskirts_button_pressed():
 	current_objective = Objectives.ObjectiveOutskirts
@@ -146,7 +146,6 @@ func _on_dungeon_quest_objective_area_body_entered(body):
 		finish_quest(1)
 
 
-
 func _on_pit_quest_objective_area_body_entered(body):
 	if body.is_in_group("Player") && current_objective == Objectives.ObjectivePit:
 		finish_quest(2)
@@ -161,11 +160,5 @@ func _on_outskirts_quest_objective_area_body_entered(body):
 
 func _on_tower_quest_objective_area_body_entered(body):
 	if body.is_in_group("Player") && current_objective == Objectives.ObjectiveTower:
-		var node = get_child(4)
-		if node != null:
-			node.visible = false
-
-		quest_completed.emit(timer_node.text)
-		sound_quest_complete.play()
 		finish_quest(4)
 
