@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw2bo3qiovw20"]
+
+[ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_h4nqr"]
+[ext_resource type="Script" path="res://src/scenes/menus/settings_menu.gd" id="2_weypo"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_h4nqr")
+script = ExtResource("2_weypo")
+
+[node name="MainSettings" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -67.5
+offset_right = 250.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainSettings"]
+layout_mode = 2
+text = "Settings
+"
+horizontal_alignment = 1
+
+[node name="AudioButton" type="Button" parent="MainSettings"]
+layout_mode = 2
+text = "Audio"
+
+[node name="VideoButton" type="Button" parent="MainSettings"]
+layout_mode = 2
+text = "Video"
+
+[node name="BackButton" type="Button" parent="MainSettings"]
+layout_mode = 2
+text = "Back"
+
+[node name="AudioSettings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -78.0
+offset_right = 250.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_h4nqr")
+
+[node name="Label" type="Label" parent="AudioSettings"]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="AudioSettings"]
+layout_mode = 2
+size_flags_stretch_ratio = 5.0
+
+[node name="Label" type="Label" parent="AudioSettings/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Master"
+
+[node name="Slider" type="HSlider" parent="AudioSettings/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Music" type="HBoxContainer" parent="AudioSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AudioSettings/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Music"
+
+[node name="Slider" type="HSlider" parent="AudioSettings/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="SFX" type="HBoxContainer" parent="AudioSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AudioSettings/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "SFX"
+
+[node name="Slider" type="HSlider" parent="AudioSettings/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="AudioBackButton" type="Button" parent="AudioSettings"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MainSettings/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="MainSettings/VideoButton" to="." method="_on_video_button_pressed"]
+[connection signal="pressed" from="MainSettings/BackButton" to="." method="_on_main_back_button_pressed"]
+[connection signal="value_changed" from="AudioSettings/Master/Slider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="AudioSettings/Music/Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="AudioSettings/SFX/Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="AudioSettings/AudioBackButton" to="." method="_on_audio_back_button_pressed"]

@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://daoq27b6vlwuy"]
+[gd_scene load_steps=4 format=3 uid="uid://daoq27b6vlwuy"]
 
 [ext_resource type="Script" path="res://src/scenes/menus/pause_menu.gd" id="1_2fyo4"]
+[ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_tdcnb"]
 [ext_resource type="PackedScene" uid="uid://dkld2fwdovoqb" path="res://src/scenes/menus/settings/settings_menu.tscn" id="2_5wehs"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tdcnb")
 script = ExtResource("1_2fyo4")
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
@@ -16,10 +22,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.5
-offset_right = 100.0
-offset_bottom = 50.5
+offset_left = -250.0
+offset_top = -67.5
+offset_right = 250.0
+offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
 
