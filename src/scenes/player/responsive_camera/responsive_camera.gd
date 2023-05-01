@@ -30,24 +30,30 @@ func _process(delta):
 			var x = to_target_vector_normalized.x * abs(viewport.size.x / 4)
 			var newv = Vector2(x, y)
 
-			var node = get_child(2)
+			var node = get_child(3)
 			if node != null:
 				node.visible = true
 				node.position = newv
 		else:
-			var node = get_child(2)
+			var node = get_child(3)
 			if node != null:
 				node.visible = false
 
 
 func _on_quest_system_quest_completed(time_completed, best_time):
 	quest_target_node = null
-	var node = get_child(1)
-	if node != null:
-		node.visible = true
-		node.text = "Delivery Complete! Final Time: " + time_completed
-		await get_tree().create_timer(3).timeout
-		node.visible = false
+	var nodeVictory = get_child(1)
+	nodeVictory.visible = true
+	nodeVictory.text = "Delivery Complete! Final Time: " + time_completed
+		
+	var nodeBest = get_child(2)
+	nodeBest.visible = true
+	nodeBest.text = "Best Time: " + str(Time.get_time_string_from_unix_time(best_time))
+	
+	
+	await get_tree().create_timer(3).timeout
+	nodeVictory.visible = false
+	nodeBest.visible = false
 
 
 func _on_quest_system_target_set(target):

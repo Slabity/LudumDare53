@@ -48,12 +48,23 @@ metadata/_edit_use_anchors_ = true
 [node name="VictoryText" type="LineEdit" parent="Camera2D"]
 visible = false
 offset_left = -338.0
-offset_top = -25.0
+offset_top = -38.0
 offset_right = 339.0
-offset_bottom = 17.0
+offset_bottom = 4.0
 theme = ExtResource("5_ocb13")
 theme_override_font_sizes/font_size = 15
 placeholder_text = "Delivery Complete! Final Time: 00:00:00"
+alignment = 1
+
+[node name="BestTimeText" type="LineEdit" parent="Camera2D"]
+visible = false
+offset_left = -338.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 47.0
+theme = ExtResource("5_ocb13")
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Best Time: 00:00:00"
 alignment = 1
 
 [node name="FloatingQuestIndicator" type="Sprite2D" parent="Camera2D"]
