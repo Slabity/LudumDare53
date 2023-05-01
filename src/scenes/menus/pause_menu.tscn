@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://daoq27b6vlwuy"]
+[gd_scene load_steps=5 format=3 uid="uid://daoq27b6vlwuy"]
 
 [ext_resource type="Script" path="res://src/scenes/menus/pause_menu.gd" id="1_2fyo4"]
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="1_tdcnb"]
 [ext_resource type="PackedScene" uid="uid://bw2bo3qiovw20" path="res://src/scenes/menus/settings_menu.tscn" id="2_5wehs"]
+[ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="3_la7dw"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -33,6 +34,10 @@ grow_vertical = 2
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
+
+[node name="tutorial" parent="MainButtons" instance=ExtResource("3_la7dw")]
+position = Vector2(-175, 316.5)
+scale = Vector2(2, 2)
 
 [node name="ResumeButton" type="Button" parent="MainButtons"]
 layout_mode = 2
