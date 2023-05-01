@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://canylnpx8xtyv"]
+
+[ext_resource type="Texture2D" uid="uid://clqau7174l5xq" path="res://assets/GeneralArt/FToInteract.png" id="1_3s7ue"]
+[ext_resource type="Script" path="res://assets/systems/quest_system.gd" id="1_oxycj"]
+[ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="3_ncout"]
+[ext_resource type="Theme" path="res://assets/primary_theme.tres" id="4_4abda"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0bo1"]
+size = Vector2(259, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wctms"]
+size = Vector2(328, 288)
+
+[node name="QuestSystem" type="Node2D"]
+script = ExtResource("1_oxycj")
+
+[node name="FToInteractWithHub" type="Sprite2D" parent="."]
+position = Vector2(82, -105)
+texture = ExtResource("1_3s7ue")
+
+[node name="DungeonQuestIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6669, -1608)
+texture = ExtResource("3_ncout")
+
+[node name="PitQuestIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4401, 3173)
+texture = ExtResource("3_ncout")
+
+[node name="OutskirtQuestIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(6775, 1279)
+texture = ExtResource("3_ncout")
+
+[node name="TowerQuestIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3162, -4578)
+texture = ExtResource("3_ncout")
+
+[node name="MenuBar" type="VBoxContainer" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -198.0
+offset_right = 203.0
+offset_bottom = -58.0
+theme = ExtResource("4_4abda")
+
+[node name="OutskirtsButton" type="Button" parent="MenuBar"]
+layout_mode = 2
+text = "Outskirts"
+
+[node name="DungonButton" type="Button" parent="MenuBar"]
+layout_mode = 2
+text = "Dungeon"
+
+[node name="PitButton" type="Button" parent="MenuBar"]
+layout_mode = 2
+text = "Pit"
+
+[node name="TowerButton" type="Button" parent="MenuBar"]
+layout_mode = 2
+text = "Tower"
+
+[node name="QuestHubArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestHubArea"]
+position = Vector2(90, -115)
+shape = SubResource("RectangleShape2D_v0bo1")
+
+[node name="DungeonQuestObjectiveArea" type="Area2D" parent="."]
+position = Vector2(8, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonQuestObjectiveArea"]
+position = Vector2(-6673, -1579)
+shape = SubResource("RectangleShape2D_wctms")
+
+[node name="PitQuestObjectiveArea" type="Area2D" parent="."]
+position = Vector2(2277, 4802)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PitQuestObjectiveArea"]
+position = Vector2(-6673, -1571)
+shape = SubResource("RectangleShape2D_wctms")
+
+[node name="OutskirtsQuestObjectiveArea" type="Area2D" parent="."]
+position = Vector2(13450, 2907)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutskirtsQuestObjectiveArea"]
+position = Vector2(-6675, -1597)
+shape = SubResource("RectangleShape2D_wctms")
+
+[node name="TowerQuestObjectiveArea" type="Area2D" parent="."]
+position = Vector2(9838, -2951)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerQuestObjectiveArea"]
+position = Vector2(-6673, -1594)
+shape = SubResource("RectangleShape2D_wctms")
+
+[connection signal="pressed" from="MenuBar/OutskirtsButton" to="." method="_on_outskirts_button_pressed"]
+[connection signal="pressed" from="MenuBar/DungonButton" to="." method="_on_dungon_button_pressed"]
+[connection signal="pressed" from="MenuBar/PitButton" to="." method="_on_pit_button_pressed"]
+[connection signal="pressed" from="MenuBar/TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="body_entered" from="QuestHubArea" to="." method="_on_quest_hub_area_body_entered"]
+[connection signal="body_exited" from="QuestHubArea" to="." method="_on_quest_hub_area_body_exited"]
+[connection signal="body_entered" from="DungeonQuestObjectiveArea" to="." method="_on_dungeon_quest_objective_area_body_entered"]
+[connection signal="body_entered" from="PitQuestObjectiveArea" to="." method="_on_pit_quest_objective_area_body_entered"]
+[connection signal="body_entered" from="OutskirtsQuestObjectiveArea" to="." method="_on_outskirts_quest_objective_area_body_entered"]
+[connection signal="body_entered" from="TowerQuestObjectiveArea" to="." method="_on_tower_quest_objective_area_body_entered"]
