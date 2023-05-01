@@ -39,7 +39,7 @@ func _on_settings_button_pressed():
 
 func _on_exit_to_main_menu_button_pressed():
 	unpause()
-	exit_game.emit()
+	get_tree().change_scene_to_file("res://src/scenes/main_scene.tscn")
 
 
 func _on_settings_menu_exit_menu():
