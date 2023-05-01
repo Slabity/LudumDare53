@@ -19,6 +19,15 @@ size_flags_vertical = 0
 theme = ExtResource("1_db1ta")
 script = ExtResource("1_2l7t8")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.211765, 1)
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -41,21 +50,6 @@ position = Vector2(211, 209)
 scale = Vector2(0.357635, 0.357635)
 texture = ExtResource("4_6l1ht")
 script = ExtResource("4_nr25p")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(28.7793, 16.44)
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="exit_menu" from="CenterContainer/MainMenu" to="." method="_on_main_menu_exit_menu"]
 [connection signal="play_game" from="CenterContainer/MainMenu" to="." method="_on_main_menu_play_game"]
