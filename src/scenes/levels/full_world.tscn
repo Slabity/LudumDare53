@@ -132,7 +132,8 @@ position = Vector2(-2274, -431)
 [node name="QuestSystem" parent="." instance=ExtResource("8_wkkd2")]
 
 [node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
-position = Vector2(-1, -265)
+modulate = Color(0.733333, 0.733333, 0.733333, 1)
+position = Vector2(-172, 35)
 
 [node name="BackgroundFlags" type="Node2D" parent="."]
 visible = false
@@ -173,12 +174,14 @@ position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_o6fe6")
 volume_db = -9.904
 autoplay = true
 bus = &"Music"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_ao3op")
 volume_db = -9.904
 bus = &"Music"

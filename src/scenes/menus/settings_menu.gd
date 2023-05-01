@@ -47,14 +47,17 @@ func _on_main_back_button_pressed():
 
 func _on_master_slider_value_changed(value: float):
 	settings["vol_master"] = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
 
 
 func _on_music_slider_value_changed(value: float):
 	settings["vol_music"] = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
 
 
 func _on_sfx_slider_value_changed(value: float):
 	settings["vol_sfx"] = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), linear_to_db(value))
 
 
 func _on_audio_back_button_pressed():

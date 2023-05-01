@@ -6,3 +6,4 @@
 default_font = ExtResource("1_eu802")
 default_font_size = 24
 Button/colors/font_focus_color = Color(0, 0.25098, 1, 1)
+VBoxContainer/constants/separation = 30
