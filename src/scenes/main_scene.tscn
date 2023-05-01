@@ -49,8 +49,11 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(28.7793, 16.44)
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
