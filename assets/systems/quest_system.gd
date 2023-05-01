@@ -49,6 +49,8 @@ func _physics_process(delta):
 				node.get_child(0).grab_focus()
 
 			set_node_visibility(0, false, false)
+		if Input.is_action_just_released("select"):
+			set_node_visibility(5, false, false)
 
 
 func ProcessTheft(thief):
