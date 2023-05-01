@@ -6,8 +6,12 @@ extends Node2D
 @onready var raycast = $RayCast2D
 @onready var links = $Links
 @onready var hook = $Hook
+@onready var animation = $AnimationPlayer
+
 @export var grapple_length: float = 200.0
 @export var hook_speed = 1500.0
+
+var hit_particles = preload("res://src/scenes/player/grapple/hit_particles.tscn")
 
 signal grapple_attached(hook_location: Vector2)  # global position
 signal grapple_detached
@@ -17,7 +21,9 @@ var enabled = true:
 
 var firing = false
 var will_hook = false
+var played_hook_anim = false
 var target_pos = Vector2.ZERO
+var collision_normal
 
 
 func set_enabled(value):
@@ -37,6 +43,13 @@ func _process(delta):
 			hook.position = to_local(target_pos)
 			if not will_hook:
 				firing = false
+			elif not played_hook_anim:
+				var instance = hit_particles.instantiate()
+				instance.direction = collision_normal
+				instance.position = hook.position
+				add_child(instance)
+				animation.play("hook_engage")
+				played_hook_anim = true
 		_update_links_visual()
 
 
@@ -67,6 +80,7 @@ func fire_grapple(target_position):
 	raycast.force_raycast_update()
 
 	firing = true
+	played_hook_anim = false
 	will_hook = raycast.is_colliding()
 	target_pos = to_global(raycast.target_position)
 	hook.position = Vector2.ZERO
@@ -77,6 +91,7 @@ func fire_grapple(target_position):
 	if raycast.is_colliding():
 		grapple_attached.emit(raycast.get_collision_point())
 		target_pos = raycast.get_collision_point()
+		collision_normal = raycast.get_collision_normal()
 
 
 # Creates the links from origin to hook location.

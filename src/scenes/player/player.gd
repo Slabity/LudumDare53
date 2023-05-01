@@ -26,11 +26,11 @@ enum Cooldowns {
 @onready var floor_detector = $FloorDetector
 @onready var left_wall_detector = $LeftWallDetector
 @onready var right_wall_detector = $RightWallDetector
-# @onready var animation_player = $AnimationPlayer
-@onready var sprite = $Sprite
+@onready var animation_sprite = $AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var cooldowns = $Cooldowns
 @onready var grapple_node = $grapple_hook
-# @onready var dash_particles = $DashParticles
+@onready var dash_particles = $DashParticles
 
 @export var air_momentum = 0.96  # Higher is more drag.
 @export var air_input_multiplier = 0.75  # Input influence while in air
@@ -382,14 +382,13 @@ func _update_animation(input_dir):
 		if velocity.y > 0:
 			animation_new = "falling"
 		else:
-			animation_new = "jumping"
-	# animation_player.play(animation_new)
+			animation_new = "jump"
+	animation_sprite.play(animation_new)
 
 	if _dashing():
 		if _dash_trail_tick:
 			_dash_trail_tick = false
 			var dash_node = dash_trail_sprite.instantiate()
-			dash_node.texture = sprite.texture
 			dash_node.global_position = sprite.global_position
 			dash_node.flip_h = sprite.flip_h
 			dash_node.frame = sprite.frame
@@ -399,9 +398,11 @@ func _update_animation(input_dir):
 		else:
 			_dash_trail_tick = true
 
-	# dash_particles.emitting = _dashing()
+	dash_particles.emitting = _dashing()
 	# Disable or enable outline based on ability to dash.
-	# sprite.material.set_shader_param("line_color", Color(1, 1, 1, 1 if _can_dash else 0))
+	animation_sprite.material.set_shader_parameter(
+		"line_color", Color(1, 0.58, 0.49, 0.68 if _can_dash else 0.0)
+	)
 	$DebugDot.visible = _can_dash
 
 
