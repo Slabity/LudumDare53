@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfvmunhddlfnc"]
+[gd_scene load_steps=9 format=3 uid="uid://dfvmunhddlfnc"]
 
 [ext_resource type="Script" path="res://assets/enemy/EnemyScript.gd" id="1_20y5b"]
 [ext_resource type="Texture2D" uid="uid://eoxahm2vf56d" path="res://assets/GeneralArt/PizzaSpirit.png" id="2_ourst"]
 [ext_resource type="Texture2D" uid="uid://det4u1og2jkc1" path="res://assets/GeneralArt/TreasureChestSprit.png" id="3_gxhu1"]
+[ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="4_otqf3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1fqe"]
 radius = 17.0
@@ -11,6 +12,9 @@ radius = 17.0
 radius = 27.074
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6isa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maix5"]
+size = Vector2(13, 8)
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(605, 560)
@@ -31,6 +35,11 @@ visible = false
 position = Vector2(1, -26)
 scale = Vector2(0.676553, 0.676553)
 texture = ExtResource("3_gxhu1")
+
+[node name="QuestIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, -47)
+texture = ExtResource("4_otqf3")
 
 [node name="Player Detector" type="Area2D" parent="."]
 
@@ -71,6 +80,12 @@ collision_mask = 2
 position = Vector2(30, 35)
 shape = SubResource("RectangleShape2D_c6isa")
 
+[node name="Stomp Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stomp Detector"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_maix5")
+
 [connection signal="body_entered" from="Player Detector" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_entered"]
 [connection signal="body_exited" from="FloorDectorLeft" to="." method="_on_floor_dector_left_body_exited"]
@@ -80,3 +95,4 @@ shape = SubResource("RectangleShape2D_c6isa")
 [connection signal="body_exited" from="WallDectorLeft" to="." method="_on_wall_dector_left_body_exited"]
 [connection signal="body_entered" from="WallDectorRight" to="." method="_on_wall_dector_right_body_entered"]
 [connection signal="body_exited" from="WallDectorRight" to="." method="_on_wall_dector_right_body_exited"]
+[connection signal="body_entered" from="Stomp Detector" to="." method="_on_stomp_detector_body_entered"]
