@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpy54wydrnvb"
-path="res://.godot/imported/Tower.png-987d2ec677cbcbc887350a2416586f49.ctex"
+uid="uid://cvadfrb1mrr8b"
+path="res://.godot/imported/Outskirts.png-c198e174f02790d25a5441b80de45b68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/background_stuff/BackgroundArt/Tower.png"
-dest_files=["res://.godot/imported/Tower.png-987d2ec677cbcbc887350a2416586f49.ctex"]
+source_file="res://BackgroundArt/Outskirts.png"
+dest_files=["res://.godot/imported/Outskirts.png-c198e174f02790d25a5441b80de45b68.ctex"]
 
 [params]
 
