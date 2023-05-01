@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvadfrb1mrr8b"
-path="res://.godot/imported/Outskirts.png-a2aabbb4b56631ae853ef0f6a91356bf.ctex"
+uid="uid://cmbvwlqw2g3g0"
+path="res://.godot/imported/Dungeon.png-6532e98f8ed1634920d7bdb8ae2c1a8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/background_stuff/BackgroundArt/Outskirts.png"
-dest_files=["res://.godot/imported/Outskirts.png-a2aabbb4b56631ae853ef0f6a91356bf.ctex"]
+source_file="res://assets/BackgroundArt/Dungeon.png"
+dest_files=["res://.godot/imported/Dungeon.png-6532e98f8ed1634920d7bdb8ae2c1a8b.ctex"]
 
 [params]
 
