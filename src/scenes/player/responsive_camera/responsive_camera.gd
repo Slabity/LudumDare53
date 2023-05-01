@@ -45,12 +45,11 @@ func _on_quest_system_quest_completed(time_completed, best_time):
 	var timernode = get_child(1)
 	timernode.visible = true
 	timernode.text = "Delivery Complete! Final Time: " + time_completed
-	
-	
+
 	var bestnode = get_child(2)
 	bestnode.visible = true
 	bestnode.text = "Best Time: " + str(Time.get_time_string_from_unix_time(best_time))
-	
+
 	await get_tree().create_timer(3).timeout
 	timernode.visible = false
 	bestnode.visible = false
@@ -58,4 +57,3 @@ func _on_quest_system_quest_completed(time_completed, best_time):
 
 func _on_quest_system_target_set(target):
 	quest_target_node = target
-
