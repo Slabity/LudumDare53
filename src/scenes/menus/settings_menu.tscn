@@ -82,6 +82,8 @@ text = "Master"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
 
 [node name="Music" type="HBoxContainer" parent="AudioSettings"]
 layout_mode = 2
@@ -96,6 +98,8 @@ text = "Music"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
 
 [node name="SFX" type="HBoxContainer" parent="AudioSettings"]
 layout_mode = 2
@@ -110,6 +114,8 @@ text = "SFX"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
 
 [node name="AudioBackButton" type="Button" parent="AudioSettings"]
 layout_mode = 2

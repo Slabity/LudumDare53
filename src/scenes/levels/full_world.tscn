@@ -174,12 +174,14 @@ position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_o6fe6")
 volume_db = -9.904
 autoplay = true
 bus = &"Music"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_ao3op")
 volume_db = -9.904
 bus = &"Music"
