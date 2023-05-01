@@ -17,6 +17,7 @@
 position = Vector2(71, 140)
 
 [node name="JumpInstruction" type="Node2D" parent="."]
+position = Vector2(0, 71)
 
 [node name="SpaceKeyDark" type="Sprite2D" parent="JumpInstruction"]
 position = Vector2(51.75, -63)
@@ -52,10 +53,11 @@ hframes = 4
 vframes = 3
 
 [node name="DashInstruction" type="Node2D" parent="."]
+position = Vector2(138, 33)
 
 [node name="Dash" type="Sprite2D" parent="DashInstruction"]
 texture_filter = 1
-position = Vector2(142, -27)
+position = Vector2(133.973, -27)
 texture = ExtResource("6_mm21q")
 
 [node name="Dash" type="Sprite2D" parent="DashInstruction/Dash"]
@@ -85,12 +87,12 @@ scale = Vector2(0.215, 0.215)
 texture = ExtResource("8_atv27")
 
 [node name="SpaceKeyDark" type="Sprite2D" parent="DashInstruction"]
-position = Vector2(55, -24)
+position = Vector2(46.9725, -24)
 scale = Vector2(0.27945, 0.27945)
 texture = ExtResource("9_bpv8h")
 
 [node name="Grapple" type="Node2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(305, -9)
 
 [node name="XboxSeriesXRb" type="Sprite2D" parent="Grapple"]
 position = Vector2(22, 16)
@@ -99,7 +101,7 @@ texture = ExtResource("10_ogc65")
 
 [node name="Links" type="Sprite2D" parent="Grapple"]
 texture_repeat = 2
-position = Vector2(125, 15)
+position = Vector2(113.14, 15)
 rotation = -1.58757
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("12_etoby")
@@ -107,19 +109,19 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 100)
 
 [node name="Hook" type="Sprite2D" parent="Grapple"]
-position = Vector2(148, 14)
+position = Vector2(136.14, 14)
 rotation = -1.58757
 scale = Vector2(0.68, 0.68)
 texture = ExtResource("13_pvq12")
 
 [node name="Idle" type="Sprite2D" parent="Grapple"]
 texture_filter = 1
-position = Vector2(98, 12)
+position = Vector2(86.1398, 12)
 texture = ExtResource("5_1yin1")
 hframes = 4
 vframes = 3
 
 [node name="MouseRightKeyDark" type="Sprite2D" parent="Grapple"]
-position = Vector2(56, 15)
+position = Vector2(44.1398, 15)
 scale = Vector2(0.202796, 0.202796)
 texture = ExtResource("12_p58am")

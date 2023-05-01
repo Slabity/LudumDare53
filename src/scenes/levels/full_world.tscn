@@ -132,7 +132,8 @@ position = Vector2(-2274, -431)
 [node name="QuestSystem" parent="." instance=ExtResource("8_wkkd2")]
 
 [node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
-position = Vector2(-1, -265)
+modulate = Color(0.733333, 0.733333, 0.733333, 1)
+position = Vector2(-172, 35)
 
 [node name="BackgroundFlags" type="Node2D" parent="."]
 visible = false
