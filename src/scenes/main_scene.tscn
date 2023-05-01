@@ -26,13 +26,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.211765, 0.211765, 0.211765, 1)
+color = Color(0.333333, 0.129412, 0.223529, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -7.0
+offset_right = -16.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -40,13 +44,13 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="MenuBounceCat" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(898, 454)
+position = Vector2(963, 445)
 scale = Vector2(0.270827, 0.270827)
 texture = ExtResource("3_yfchj")
 script = ExtResource("4_nr25p")
 
 [node name="MenuBounceChaser" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(211, 209)
+position = Vector2(178, 147)
 scale = Vector2(0.357635, 0.357635)
 texture = ExtResource("4_6l1ht")
 script = ExtResource("4_nr25p")
