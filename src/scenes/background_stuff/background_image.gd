@@ -25,7 +25,7 @@ func _process(delta):
 #Takes a new new_background object. New Background should be a 2D sprite node?
 #Or maybe a name? I may need to think about this a bit more.
 func _set_background(_body, background_string):
-	if background_string != cur_background_string:
+	if background_string != cur_background_string && _body.is_in_group("Player"):
 		cur_background_string = background_string
 		new_background = get_node("background_image_" + background_string)
 		last_background = current_background
