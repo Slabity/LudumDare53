@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="7_81pba"]
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
 [ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="10_4qky2"]
-[ext_resource type="AudioStream" uid="uid://c5124xbhtgadu" path="res://assets/music/thats_it_for_today_intro.wav" id="10_7vo72"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
-[ext_resource type="AudioStream" uid="uid://djtisnybnagia" path="res://assets/music/thats_it_for_today_loop.wav" id="11_wkmmp"]
+[ext_resource type="AudioStream" uid="uid://bn1x8cwbijdkk" path="res://assets/music/thats_it_for_today_intro.mp3" id="13_o6fe6"]
+[ext_resource type="AudioStream" uid="uid://0h43bhfe3jvh" path="res://assets/music/thats_it_for_today_loop.mp3" id="14_ao3op"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
 size = Vector2(30, 398)
@@ -202,13 +202,13 @@ position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_7vo72")
+stream = ExtResource("13_o6fe6")
 volume_db = -9.904
 autoplay = true
 bus = &"Music"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_wkmmp")
+stream = ExtResource("14_ao3op")
 volume_db = -9.904
 bus = &"Music"
 
