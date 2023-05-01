@@ -25,6 +25,7 @@ scale = Vector2(0.34, 0.34)
 texture = ExtResource("1_cd6ix")
 
 [node name="XboxSeriesXA" type="Sprite2D" parent="JumpInstruction"]
+visible = false
 position = Vector2(20.75, -63)
 scale = Vector2(0.215, 0.215)
 texture = ExtResource("2_td2yd")
@@ -82,6 +83,7 @@ position = Vector2(-15, 0)
 texture = ExtResource("6_mm21q")
 
 [node name="XboxSeriesXA2" type="Sprite2D" parent="DashInstruction"]
+visible = false
 position = Vector2(21, -24)
 scale = Vector2(0.215, 0.215)
 texture = ExtResource("8_atv27")
@@ -95,6 +97,7 @@ texture = ExtResource("9_bpv8h")
 position = Vector2(305, -9)
 
 [node name="XboxSeriesXRb" type="Sprite2D" parent="Grapple"]
+visible = false
 position = Vector2(22, 16)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_ogc65")
