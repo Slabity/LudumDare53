@@ -56,6 +56,7 @@ func ProcessTheft(thief):
 		#........ I do have treasure why do you ask?
 		thief.steal(true)
 		target_set.emit(thief)
+		sound_quest_update.play()
 		current_thief = thief
 		set_node_visibility(current_objective, false, false)
 
@@ -63,6 +64,7 @@ func ProcessCounterTheft():
 	current_thief = null
 	if(set_node_visibility(current_objective, true, true)):
 			target_set.emit(target)
+			sound_quest_update.play()
 		
 
 func _on_quest_hub_area_body_entered(body):
@@ -83,6 +85,8 @@ func _on_quest_hub_area_body_exited(body):
 		quest_started.emit()
 		if(set_node_visibility(current_objective, true, true)):
 			target_set.emit(target)
+			sound_quest_update.play()
+			
 
 
 func set_node_visibility(child_to_toggle: int, state_to_set: bool,set_current_target: bool):
@@ -140,6 +144,7 @@ func finish_quest(child_to_hide):
 				run_best_time =BestTime.Tower
 		
 		quest_completed.emit(map_node.time_delta + ":%02d" % int(fmod(time, 1) * 100), run_best_time)
+		sound_quest_complete.play()
 
 func _on_dungeon_quest_objective_area_body_entered(body):
 	if body.is_in_group("Player") && current_objective == Objectives.ObjectiveDungeon:
