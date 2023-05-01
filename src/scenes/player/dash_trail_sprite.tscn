@@ -1,12 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ba77kgop2fdgi"]
 
-[ext_resource type="Texture2D" uid="uid://cvanx1etquv83" path="res://assets/player/robot_demo.png" id="1_e6mwq"]
+[ext_resource type="Texture2D" uid="uid://co8gs5wjkpldw" path="res://assets/player/dash.png" id="1_jmrog"]
 [ext_resource type="Script" path="res://src/scenes/player/dash_trail_sprite.gd" id="2_vfafm"]
 
 [node name="DashTrailSprite" type="Sprite2D"]
-modulate = Color(0.145098, 0.443137, 1, 0.356863)
-texture = ExtResource("1_e6mwq")
-hframes = 16
-vframes = 2
-frame = 19
+modulate = Color(0.537255, 0.662745, 1, 0.356863)
+texture = ExtResource("1_jmrog")
 script = ExtResource("2_vfafm")
