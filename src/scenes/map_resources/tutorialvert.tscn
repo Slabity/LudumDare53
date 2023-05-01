@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=3 uid="uid://i5cq5yk66yv7"]
+
+[ext_resource type="Texture2D" uid="uid://bn70rfu2rare6" path="res://assets/keys/Space_Key_Dark.png" id="1_7pniv"]
+[ext_resource type="Texture2D" uid="uid://yahrrf2g6jvn" path="res://assets/keys/XboxSeriesX_A.png" id="2_5gxoa"]
+[ext_resource type="Texture2D" uid="uid://dmc55pt3s5uah" path="res://assets/keys/Directional_Arrow_Straight.png" id="3_chwiq"]
+[ext_resource type="Texture2D" uid="uid://m8lph675qfkr" path="res://assets/player/jump.png" id="4_w38d5"]
+[ext_resource type="Texture2D" uid="uid://bkcsalei0rm6o" path="res://assets/player/idle.png" id="5_gqw3i"]
+[ext_resource type="Texture2D" uid="uid://co8gs5wjkpldw" path="res://assets/player/dash.png" id="6_fvvgs"]
+[ext_resource type="Texture2D" uid="uid://x5s5vjs8d2ul" path="res://assets/keys/XboxSeriesX_Y.png" id="7_du1ni"]
+[ext_resource type="Texture2D" uid="uid://b7jm4hodnl2ds" path="res://assets/keys/Shift_Key_Dark.png" id="8_65qk1"]
+[ext_resource type="Texture2D" uid="uid://d22g2cct327i4" path="res://assets/keys/XboxSeriesX_RB.png" id="9_knygd"]
+[ext_resource type="Texture2D" uid="uid://kxctmivekcw8" path="res://assets/player/link.png" id="10_lss64"]
+[ext_resource type="Texture2D" uid="uid://d3vkgwtfgrsd8" path="res://assets/player/grapple_hook.png" id="11_uamo0"]
+[ext_resource type="Texture2D" uid="uid://dl5ruc0stlnq" path="res://assets/keys/Mouse_Right_Key_Dark.png" id="12_viy2w"]
+
+[node name="tutorial" type="Node2D"]
+position = Vector2(71, 140)
+
+[node name="JumpInstruction" type="Node2D" parent="."]
+position = Vector2(138, 37)
+
+[node name="SpaceKeyDark" type="Sprite2D" parent="JumpInstruction"]
+position = Vector2(51.75, -63)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("1_7pniv")
+
+[node name="XboxSeriesXA" type="Sprite2D" parent="JumpInstruction"]
+position = Vector2(20.75, -63)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("2_5gxoa")
+
+[node name="DirectionalArrowStraight" type="Sprite2D" parent="JumpInstruction"]
+position = Vector2(115.75, -79)
+rotation = -0.646204
+scale = Vector2(0.47561, 0.47561)
+texture = ExtResource("3_chwiq")
+
+[node name="Jump" type="Sprite2D" parent="JumpInstruction/DirectionalArrowStraight"]
+texture_filter = 1
+position = Vector2(55.1245, -13.728)
+rotation = 0.646204
+scale = Vector2(2.10256, 2.10256)
+texture = ExtResource("4_w38d5")
+
+[node name="Idle" type="Sprite2D" parent="JumpInstruction/DirectionalArrowStraight"]
+modulate = Color(1, 0.984314, 0.984314, 1)
+texture_filter = 1
+position = Vector2(-56.7747, 1.94916)
+rotation = 0.646204
+scale = Vector2(2.10256, 2.10256)
+texture = ExtResource("5_gqw3i")
+hframes = 4
+vframes = 3
+
+[node name="DashInstruction" type="Node2D" parent="."]
+position = Vector2(138, 33)
+
+[node name="Dash" type="Sprite2D" parent="DashInstruction"]
+texture_filter = 1
+position = Vector2(133.973, -27)
+texture = ExtResource("6_fvvgs")
+
+[node name="Dash" type="Sprite2D" parent="DashInstruction/Dash"]
+modulate = Color(0.333333, 0.552941, 1, 0.301961)
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(-18, 0)
+texture = ExtResource("6_fvvgs")
+
+[node name="Dash" type="Sprite2D" parent="DashInstruction/Dash/Dash"]
+modulate = Color(1, 1, 1, 0.596078)
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(-17, 0)
+texture = ExtResource("6_fvvgs")
+
+[node name="Dash" type="Sprite2D" parent="DashInstruction/Dash/Dash/Dash"]
+modulate = Color(1, 1, 1, 0.521569)
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(-15, 0)
+texture = ExtResource("6_fvvgs")
+
+[node name="XboxSeriesXA2" type="Sprite2D" parent="DashInstruction"]
+position = Vector2(21, -24)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("7_du1ni")
+
+[node name="SpaceKeyDark" type="Sprite2D" parent="DashInstruction"]
+position = Vector2(46.9725, -24)
+scale = Vector2(0.27945, 0.27945)
+texture = ExtResource("8_65qk1")
+
+[node name="Grapple" type="Node2D" parent="."]
+position = Vector2(140, 32)
+
+[node name="XboxSeriesXRb" type="Sprite2D" parent="Grapple"]
+position = Vector2(22, 16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_knygd")
+
+[node name="Links" type="Sprite2D" parent="Grapple"]
+texture_repeat = 2
+position = Vector2(113.14, 15)
+rotation = -1.58757
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("10_lss64")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 100)
+
+[node name="Hook" type="Sprite2D" parent="Grapple"]
+position = Vector2(136.14, 14)
+rotation = -1.58757
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("11_uamo0")
+
+[node name="Idle" type="Sprite2D" parent="Grapple"]
+texture_filter = 1
+position = Vector2(86.1398, 12)
+texture = ExtResource("5_gqw3i")
+hframes = 4
+vframes = 3
+
+[node name="MouseRightKeyDark" type="Sprite2D" parent="Grapple"]
+position = Vector2(44.1398, 15)
+scale = Vector2(0.202796, 0.202796)
+texture = ExtResource("12_viy2w")

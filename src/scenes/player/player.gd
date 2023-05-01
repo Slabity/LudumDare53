@@ -61,6 +61,7 @@ enum Cooldowns {
 @export var grapple_damp_const = Vector2(1.0, 2.0)
 @export var grapple_swing_ratio = 0.06  # How much the velocity influences the swing force.
 @export var grapple_max_force = 18.0
+@export var outline_color = Color(1, 0.58, 0.49, 0.68)
 
 var _has_dash_power = true
 var _dash_dir = Vector2.ZERO
@@ -408,10 +409,11 @@ func _update_animation(input_dir):
 
 	dash_particles.emitting = _dashing()
 	# Disable or enable outline based on ability to dash.
-	animation_sprite.material.set_shader_parameter(
-		"line_color", Color(1, 0.58, 0.49, 0.68 if _can_dash else 0.0)
+	var out_color = Color(
+		outline_color.r, outline_color.g, outline_color.b, outline_color.a if _can_dash else 0.0
 	)
-	$DebugDot.visible = _can_dash
+
+	animation_sprite.material.set_shader_parameter("line_color", out_color)
 
 
 func _on_grapple_hook_grapple_detached():

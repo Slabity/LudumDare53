@@ -36,8 +36,8 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="tutorial" parent="MainButtons" instance=ExtResource("3_la7dw")]
-position = Vector2(-175, 316.5)
-scale = Vector2(2, 2)
+position = Vector2(-38, 281.5)
+scale = Vector2(1.32, 1.32)
 
 [node name="ResumeButton" type="Button" parent="MainButtons"]
 layout_mode = 2
