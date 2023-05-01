@@ -1,12 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://y8hpdvbuk7i5"]
+[gd_scene load_steps=21 format=3 uid="uid://y8hpdvbuk7i5"]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
 [ext_resource type="PackedScene" uid="uid://b74csm0kdko4a" path="res://src/scenes/player/player.tscn" id="3_7ghew"]
 [ext_resource type="PackedScene" uid="uid://c0k06hqw04jfh" path="res://src/scenes/player/responsive_camera/responsive_camera.tscn" id="4_v8kh4"]
-[ext_resource type="PackedScene" uid="uid://daxhgpltoij7t" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="PackedScene" uid="uid://65lwf77qgod7" path="res://src/scenes/map_resources/teledialogue.tscn" id="4_y6t5r"]
-[ext_resource type="PackedScene" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
+[ext_resource type="PackedScene" uid="uid://daxhgpltoij7t" path="res://src/scenes/background_stuff/background_display.tscn" id="4_yva5e"]
 [ext_resource type="Texture2D" uid="uid://blg5ftgfjmxuw" path="res://assets/GeneralArt/GelCube.png" id="5_65hsb"]
 [ext_resource type="Theme" uid="uid://s7ybuh7pont2" path="res://assets/primary_theme.tres" id="5_ocb13"]
 [ext_resource type="Texture2D" uid="uid://c7giokj7f2rva" path="res://assets/GeneralArt/QuestIndicatorBorder.png" id="5_pyokv"]
@@ -14,13 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dfvmunhddlfnc" path="res://assets/enemy/enemy.tscn" id="7_81pba"]
 [ext_resource type="PackedScene" uid="uid://daoq27b6vlwuy" path="res://src/scenes/menus/pause_menu.tscn" id="8_1ytbg"]
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
-[ext_resource type="Texture2D" uid="uid://b47e3nik3q5vl" path="res://assets/GeneralArt/Cerberwhat.png" id="9_cny2i"]
 [ext_resource type="Texture2D" uid="uid://k5spyfu2h56r" path="res://assets/GeneralArt/WeirdBird.png" id="9_y4qbc"]
-[ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="10_4qky2"]
 [ext_resource type="Texture2D" uid="uid://kvtb0pn33tjd" path="res://assets/GeneralArt/Squid.png" id="10_emqnp"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
 [ext_resource type="AudioStream" uid="uid://bn1x8cwbijdkk" path="res://assets/music/thats_it_for_today_intro.mp3" id="13_o6fe6"]
 [ext_resource type="AudioStream" uid="uid://0h43bhfe3jvh" path="res://assets/music/thats_it_for_today_loop.mp3" id="14_ao3op"]
+[ext_resource type="Texture2D" uid="uid://dslg0hkpxjr47" path="res://assets/GeneralArt/PizzaGoblin.png" id="18_tkatf"]
 [ext_resource type="PackedScene" uid="uid://2pjica0fckka" path="res://src/scenes/map_resources/telehometext.tscn" id="18_uujh4"]
 
 [node name="map001" type="Node2D"]
@@ -216,6 +214,21 @@ position = Vector2(-3133, -191)
 
 [node name="telehometext6" parent="." instance=ExtResource("18_uujh4")]
 position = Vector2(2658, -268)
+
+[node name="PizzaGoblin" type="Sprite2D" parent="."]
+position = Vector2(-6756, -1521)
+scale = Vector2(0.0827827, 0.0827827)
+texture = ExtResource("18_tkatf")
+
+[node name="WeirdBird" type="Sprite2D" parent="."]
+position = Vector2(3074, -4502)
+scale = Vector2(0.146408, 0.146408)
+texture = ExtResource("9_y4qbc")
+
+[node name="Squid" type="Sprite2D" parent="."]
+position = Vector2(6683, 1364)
+scale = Vector2(0.160375, 0.160375)
+texture = ExtResource("10_emqnp")
 
 [connection signal="teleport" from="Player/teledialogue" to="." method="_on_teledialogue_teleport"]
 [connection signal="hub_enter" from="QuestSystem" to="." method="_on_quest_system_hub_enter"]
