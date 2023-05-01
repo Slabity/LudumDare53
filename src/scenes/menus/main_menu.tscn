@@ -81,12 +81,22 @@ horizontal_alignment = 1
 [node name="Credits" type="Label" parent="Credits"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "* [Reaper character art](https://samuellee.itch.io/reaper-animated-pixel-art)
+text = "Part of Ludum Game Jam 53
+
+Developers:
+@Slabity
+@Gametrodon
+@Meptl
+@Kalloc
+
+Assets used:
+* [Reaper character art](https://samuellee.itch.io/reaper-animated-pixel-art)
 * [Background music](https://opengameart.org/content/cheerful-upbeat-tune) created by ViRiX Dreamcore (David Mckee). www.virixcore.net for more information
 * [Tileset](https://pixelfrog-assets.itch.io/kings-and-pigs)
 * [Xelu's controller prompts](https://thoseawesomeguys.com/prompts/)
 * [Chain link visual](https://gitlab.com/godotdemos/hook-demo)
-* [Sound effects](https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack)"
+* [Sound effects](https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack)
+* [PublicPixel font](https://www.fontspace.com/public-pixel-font-f72305)"
 horizontal_alignment = 1
 autowrap_mode = 2
 
