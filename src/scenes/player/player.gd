@@ -31,6 +31,9 @@ enum Cooldowns {
 @onready var cooldowns = $Cooldowns
 @onready var grapple_node = $grapple_hook
 @onready var dash_particles = $DashParticles
+@onready var sound_jump = $SoundJump
+@onready var sound_land = $SoundLand
+@onready var sound_dash = $SoundDash
 
 @export var air_momentum = 0.96  # Higher is more drag.
 @export var air_input_multiplier = 0.75  # Input influence while in air
@@ -145,6 +148,8 @@ func _physics_process(delta):
 			_on_force_to_finished()
 	else:
 		var input_dir = input_direction()
+		if is_on_floor() and !_was_on_floor:
+			sound_land.play()
 		_apply_coyote()
 		_apply_movement(input_dir, delta)
 		_check_jump(input_dir)
@@ -272,6 +277,7 @@ func _check_wall_jump(input_dir):
 	velocity.y = -speed.y
 	velocity.x = wall_kick_speed * -wall_dir
 
+	sound_land.play()
 	cooldowns.add(Cooldowns.WALL_KICK_RECENT, 0.1)
 	if !_can_dash:
 		cooldowns.add(Cooldowns.WALL_KICK_DASH_RESET, dash_limit, self, "_reset_dash")
@@ -315,6 +321,7 @@ func _check_jump(input_dir):
 				if !cooldowns.exists(Cooldowns.DASH_EARLY):
 					_can_dash = true
 			cooldowns.add(Cooldowns.JUMP_RELEASE_ALLOWED, 0.2)
+			sound_jump.play()
 
 		_check_wall_jump(input_dir)
 
@@ -330,6 +337,7 @@ func _check_dash(input_dir):
 		cooldowns.add(Cooldowns.DASH, dash_length)
 		cooldowns.add(Cooldowns.DASH_LIMIT, dash_limit)
 		cooldowns.add(Cooldowns.DASH_EARLY, dash_reset_early)
+		sound_dash.play()
 
 
 func _apply_grapple(delta):
