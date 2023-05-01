@@ -9,6 +9,7 @@ var were_questing = false
 var target = Vector2(0,0)
 @onready var timer_node = get_node("../Camera2D/Timer")
 signal quest_completed (time_completed_string: String)
+signal target_set (target: Node)
 
 
 func _physics_process(delta):
@@ -22,8 +23,6 @@ func _physics_process(delta):
 			node = get_child(0)
 			if node != null:
 				node.visible = false
-	if(were_questing):
-		pass
 
 
 func _on_quest_hub_area_body_entered(body):
@@ -56,28 +55,28 @@ func _on_quest_hub_area_body_exited(body):
 					if node != null:
 						node.visible = true
 						target = node.position
-						print(target)
+						target_set.emit(target)
 						
 				Objectives.ObjectiveDungeon:
 					node = get_child(1)
 					if node != null:
 						node.visible = true
 						target = node.position
-						print(target)
+						target_set.emit(target)
 					
 				Objectives.ObjectivePit:
 					node = get_child(2)
 					if node != null:
 						node.visible = true
 						target = node.position
-						print(target)
+						target_set.emit(target)
 					
 				Objectives.ObjectiveOutskirts:
 					node = get_child(3)
 					if node != null:
 						node.visible = true
 						target = node.position
-						print(target)
+						target_set.emit(target)
 
 
 func _on_outskirts_button_pressed():
