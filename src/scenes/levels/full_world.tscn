@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://y8hpdvbuk7i5"]
+[gd_scene load_steps=18 format=3 uid="uid://y8hpdvbuk7i5"]
 
 [ext_resource type="Script" path="res://src/scenes/levels/map001.gd" id="1_vle44"]
 [ext_resource type="TileSet" uid="uid://b4w1mvhxby2au" path="res://src/scenes/levels/red_brick_tiles.tres" id="2_hr635"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://canylnpx8xtyv" path="res://assets/systems/quest_system.tscn" id="8_wkkd2"]
 [ext_resource type="PackedScene" uid="uid://cgnkkod1ljdce" path="res://src/scenes/map_resources/tutorial.tscn" id="10_4qky2"]
 [ext_resource type="PackedScene" uid="uid://crj3nasx65tg7" path="res://src/scenes/map_resources/triggerarea.tscn" id="11_a0kwl"]
+[ext_resource type="AudioStream" uid="uid://bn1x8cwbijdkk" path="res://assets/music/thats_it_for_today_intro.mp3" id="13_o6fe6"]
+[ext_resource type="AudioStream" uid="uid://0h43bhfe3jvh" path="res://assets/music/thats_it_for_today_loop.mp3" id="14_ao3op"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osk7d"]
 size = Vector2(30, 398)
@@ -160,6 +162,7 @@ position = Vector2(4439, 1812)
 
 [node name="tutorial" parent="." instance=ExtResource("10_4qky2")]
 position = Vector2(-1, -265)
+
 [node name="BackgroundFlags" type="Node2D" parent="."]
 visible = false
 
@@ -198,6 +201,17 @@ scale = Vector2(1, 18.2956)
 position = Vector2(-2080, -121)
 scale = Vector2(1, 2.04)
 
+[node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_o6fe6")
+volume_db = -9.904
+autoplay = true
+bus = &"Music"
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ao3op")
+volume_db = -9.904
+bus = &"Music"
+
 [connection signal="body_entered" from="StartArea" to="." method="_on_start_area_body_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
@@ -210,3 +224,4 @@ scale = Vector2(1, 2.04)
 [connection signal="body_entered" from="BackgroundFlags/OutskirtsEntryFlag" to="Player/background_display" method="_set_background" binds= ["outskirts"]]
 [connection signal="body_entered" from="BackgroundFlags/OutskirtsExitFlag" to="Player/background_display" method="_set_background" binds= ["city"]]
 [connection signal="body_entered" from="BackgroundFlags/PitsEntryFlag" to="Player/background_display" method="_set_background" binds= ["pits"]]
+[connection signal="finished" from="MusicIntro" to="MusicLoop" method="play"]

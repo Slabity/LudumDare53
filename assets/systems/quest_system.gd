@@ -8,6 +8,9 @@ const Objectives = {
 	NoObjective = ""
 }
 
+@onready var sound_quest_complete = $QuestComplete
+@onready var sound_quest_update = $QuestUpdate
+
 var player_is_in_quest_hub = false
 var is_menu_visible = false
 var current_objective = Objectives.NoObjective
@@ -58,24 +61,28 @@ func _on_quest_hub_area_body_exited(body):
 					node.visible = true
 					target = node.position
 					target_set.emit(target)
+					sound_quest_update.play()
 			Objectives.ObjectiveDungeon:
 				node = get_child(1)
 				if node != null:
 					node.visible = true
 					target = node.position
 					target_set.emit(target)
+					sound_quest_update.play()
 			Objectives.ObjectivePit:
 				node = get_child(2)
 				if node != null:
 					node.visible = true
 					target = node.position
 					target_set.emit(target)
+					sound_quest_update.play()
 			Objectives.ObjectiveOutskirts:
 				node = get_child(3)
 				if node != null:
 					node.visible = true
 					target = node.position
 					target_set.emit(target)
+					sound_quest_update.play()
 
 
 func _on_outskirts_button_pressed():
@@ -101,6 +108,7 @@ func _on_dungeon_quest_objective_area_body_entered(body):
 			node.visible = false
 
 		quest_completed.emit(timer_node.text)
+		sound_quest_complete.play()
 
 
 func _on_pit_quest_objective_area_body_entered(body):
@@ -110,6 +118,7 @@ func _on_pit_quest_objective_area_body_entered(body):
 			node.visible = false
 
 		quest_completed.emit(timer_node.text)
+		sound_quest_complete.play()
 
 
 func _on_outskirts_quest_objective_area_body_entered(body):
@@ -119,6 +128,7 @@ func _on_outskirts_quest_objective_area_body_entered(body):
 			node.visible = false
 
 		quest_completed.emit(timer_node.text)
+		sound_quest_complete.play()
 
 
 func _on_tower_quest_objective_area_body_entered(body):
@@ -128,3 +138,4 @@ func _on_tower_quest_objective_area_body_entered(body):
 			node.visible = false
 
 		quest_completed.emit(timer_node.text)
+		sound_quest_complete.play()
