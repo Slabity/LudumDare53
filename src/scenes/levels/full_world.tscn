@@ -134,14 +134,14 @@ position = Vector2(-1623, -121)
 scale = Vector2(1, 2.5216)
 
 [node name="OutskirtsEntryFlag" parent="BackgroundFlags" instance=ExtResource("11_a0kwl")]
-position = Vector2(2076, 569)
+position = Vector2(2173, 20)
 rotation = -1.5708
-scale = Vector2(1, 18.2956)
+scale = Vector2(5.84, 2.09561)
 
 [node name="OutskirtsExitFlag" parent="BackgroundFlags" instance=ExtResource("11_a0kwl")]
-position = Vector2(2049, -86)
+position = Vector2(1727, 1)
 rotation = -1.5708
-scale = Vector2(1, 18.2956)
+scale = Vector2(5.24, 2.2956)
 
 [node name="PitsEntryFlag" parent="BackgroundFlags" instance=ExtResource("11_a0kwl")]
 position = Vector2(-2080, -121)
