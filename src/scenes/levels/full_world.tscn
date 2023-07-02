@@ -228,6 +228,8 @@ position = Vector2(2658, -268)
 position = Vector2(5469, 1254)
 
 [connection signal="teleport" from="Player/teledialogue" to="." method="_on_teledialogue_teleport"]
+[connection signal="hub_enter" from="QuestSystem" to="." method="_on_quest_system_hub_enter"]
+[connection signal="hub_leave" from="QuestSystem" to="." method="_on_quest_system_hub_leave"]
 [connection signal="quest_completed" from="QuestSystem" to="." method="_on_quest_system_quest_completed"]
 [connection signal="quest_completed" from="QuestSystem" to="Camera2D" method="_on_quest_system_quest_completed"]
 [connection signal="quest_started" from="QuestSystem" to="." method="_on_quest_system_quest_started"]
